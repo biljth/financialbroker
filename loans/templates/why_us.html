@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Mengapa Memilih Kami - Keunggulan FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Temukan alasan mengapa FINANCIAL BROKER adalah pilihan tepat untuk kebutuhan keuangan Anda. Kami menawarkan layanan terbaik dengan solusi yang disesuaikan untuk Anda.
+{% endblock %}
+
+{% block meta_keywords %}
+mengapa memilih kami, keunggulan FINANCIAL BROKER, solusi keuangan, layanan terbaik, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up"  style="margin-top: 150px; margin-bottom: -40px;">
+    <h2>Mengapa Memilih Financial Broker?<br></h2>
+  </div><!-- End Section Title -->
+
+<!-- Why Us Section -->
+<section id="why_us" class="about section">
+
+    <div class="container" style="margin-top: -60px;">
+
+        <div class="row gy-4">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <img src="{% static 'assets/img/why/approve1.webp' %}" class="img-fluid rounded-4 mb-4" alt="Mengapa Memilih Kami">
+                <p>Di FINANCIAL BROKER, kami berkomitmen untuk menghubungkan Anda dengan lembaga keuangan terbaik yang sesuai dengan kebutuhan spesifik Anda. Jaringan luas dan keahlian kami memastikan Anda mendapatkan opsi pinjaman paling menguntungkan yang tersedia.</p>
+                <p>Kami memahami bahwa mencari pinjaman yang tepat bisa menjadi tugas yang menakutkan. Oleh karena itu, kami hadir untuk memandu Anda melalui prosesnya, menawarkan solusi yang dipersonalisasi yang menghemat waktu dan tenaga Anda. Percayakan kepada kami untuk membantu Anda mendapatkan dukungan finansial yang Anda butuhkan, saat Anda membutuhkannya.</p>
+                <p>
+                    Pilih FINANCIAL BROKER untuk pengalaman yang lancar dan bebas stres dalam menemukan solusi keuangan yang tepat. Kami ada di sini untuk mendukung Anda di setiap langkah, memastikan perjalanan keuangan Anda berjalan semulus mungkin.
+                </p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+                <div class="content ps-0 ps-lg-5">
+                    <p class="fst-italic">
+                        Inilah alasan mengapa Anda harus memilih FINANCIAL BROKER sebagai mitra tepercaya dalam mendapatkan solusi keuangan terbaik:
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Panduan Ahli: Manfaatkan pengetahuan dan pengalaman kami yang luas di sektor keuangan.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Solusi yang Disesuaikan: Kami mencocokkan Anda dengan produk keuangan yang memenuhi kebutuhan unik Anda.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Kerja Sama Terpercaya: Hubungan kami dengan lembaga keuangan terkemuka menjamin Anda mendapatkan opsi terbaik.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Proses Cepat dan Mudah: Kami memastikan bahwa proses pengajuan dan persetujuan pinjaman berlangsung dengan cepat dan tanpa hambatan.</span></li>
+
+                    </ul>
+        
+                    <div class="position-relative mt-4">
+                        <img src="{% static 'assets/img/why/approve3.webp' %}" class="img-fluid rounded-4" alt="Kemitraan Keuangan Terpercaya">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section><!-- /About Section -->
+
+<!-- Call To Action Section -->
+<section id="call-to-action" class="call-to-action section dark-background">
+
+    <div class="container">
+      <img src="{% static 'assets/img/why/approve5.jpg' %}" alt="">
+      <div class="content row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-xl-10">
+          <div class="text-center">
+            <h3>Sudah Siap Meminjam?</h3>
+            <p>Tidak perlu ragu untuk menghubungi kami. Jika Anda memiliki pertanyaan, kami siap membantu. Kami di sini untuk memberikan dukungan yang Anda butuhkan.</p>
+            <a class="cta-btn" href="{% url 'kpr' %}">Ajukan Permohonan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /Call To Action Section -->
+{% endblock %}

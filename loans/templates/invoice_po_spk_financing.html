@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Invoice/PO/SPK Financing - Pembiayaan untuk Kebutuhan Bisnis Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Ajukan pembiayaan Invoice/PO/SPK untuk memenuhi kebutuhan bisnis Anda dengan syarat yang fleksibel melalui FINANCIAL BROKER.
+{% endblock %}
+
+{% block meta_keywords %}
+Invoice Financing, PO Financing, SPK Financing, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+              <a href="{% url 'kpr' %}">KPR</a>
+              <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+              <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+              <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+              <a href="{% url 'take_over' %}">Take Over</a>
+              <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+              <a href="{% url 'invoice_po_spk_financing' %}" class="active">Invoice / PO / SPK Financing</a>
+              <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>Invoice/PO/SPK Financing</h3>
+            <p>
+                Pembiayaan Invoice/PO/SPK memberikan solusi cepat untuk mendapatkan dana tunai berdasarkan faktur, purchase order, atau Surat Perintah Kerja yang Anda miliki.
+            </p>
+            <p>
+                Keuntungan dari Pembiayaan Invoice/PO/SPK:
+            </p>
+            <p>
+                <strong>Proses Cepat dan Mudah</strong>
+                <br> Ajukan permohonan dengan proses yang sederhana dan cepat.
+            </p>
+            <p>
+                <strong>Dana Tunai Segera</strong>
+                <br> Dapatkan akses ke dana tunai dalam waktu singkat untuk kebutuhan bisnis Anda.
+            </p>
+            <p>
+                <strong>Fleksibilitas Penggunaan Dana</strong>
+                <br> Gunakan dana untuk berbagai kebutuhan operasional bisnis Anda.
+            </p>
+
+            <div>
+              <a href="{% url 'invoice_financing' %}" class="custom-link stretched-link">
+                  Invoice Financing <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'po_financing' %}" class="custom-link stretched-link">
+                    PO Financing <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'spk_financing' %}" class="custom-link stretched-link">
+                    SPK Financing <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section" style="margin-top: -40px;">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              <p>
+                FINANCIAL BROKER siap membantu Anda dalam proses pengajuan Invoice/PO/SPK Financing.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>Apa itu Invoice/PO/SPK Financing?</span></h3>
+                <div class="faq-content">
+                  <p>Invoice/PO/SPK Financing adalah pembiayaan yang diberikan berdasarkan nilai faktur, purchase order, atau surat perintah kerja untuk mendapatkan dana tunai segera.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>Siapa yang bisa mengajukan Invoice/PO/SPK Financing?</span></h3>
+                <div class="faq-content">
+                  <p>Perusahaan atau individu yang memiliki faktur, purchase order, atau surat perintah kerja dapat mengajukan pembiayaan ini.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>Berapa lama proses pencairan dana?</span></h3>
+                <div class="faq-content">
+                  <p>Proses pencairan dana dapat dilakukan dalam waktu 3 hingga 5 hari kerja setelah pengajuan diterima.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Faq Section -->
+
+{% endblock %}

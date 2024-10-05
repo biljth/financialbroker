@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}Financial Broker{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% endblock %}"> 
+  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+
+  <!-- Load static files -->
+  {% load static %}
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon1.png' %}" type="image/png" rel="icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+</head>
+
+<body class="index-page">
+  {% block header %}
+
+  {% endblock %}
+
+  <header id="header" class="header fixed-top">
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src="{% static 'assets/img/LM logo2.png' %}" alt="" >
+          <h1 class="sitename">Financial Broker</h1>
+          <span>.</span>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <!-- <li><a href="{% url 'home' %}">Menu Utama<br></a></li> -->
+            <li><a href="{% url 'home' %}#about">Tentang Kami</a></li>
+            <li><a href="{% url 'why_us' %}">Mengapa Financial Broker</a></li>
+            <li class="dropdown"><a href="#"><span>Produk Layanan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="{% url 'kpr_primary' %}">KPR Primary</a></li>
+                <li><a href="{% url 'kpr_secondary' %}">KPR Secondary</a></li>
+                <li><a href="{% url 'kredit_investasi' %}">Kredit Investasi</a></li>
+                <li><a href="{% url 'multiguna' %}">Multiguna</a></li>
+                <li><a href="{% url 'refinancing' %}">Refinancing</a></li>
+                <li><a href="{% url 'modal_kerja' %}">Modal Kerja</a></li>
+                <li><a href="{% url 'take_over_kpr' %}">Take Over KPR</a></li>
+                <li><a href="{% url 'take_over_modal_kerja' %}">Take Over Modal Kerja</a></li>
+                <li><a href="{% url 'take_over_multiguna' %}">Take Over Multiguna</a></li>
+                <li><a href="{% url 'take_over_jual_beli' %}">Take Over Jual Beli</a></li>
+                <li><a href="{% url 'jaminan_bpkb' %}">Jaminan BPKB</a></li>
+                <li><a href="{% url 'jaminan_alat_berat' %}">Jaminan Alat Berat</a></li>
+                <li><a href="{% url 'invoice_financing' %}">Invoice Financing</a></li>
+                <li><a href="{% url 'po_financing' %}">PO Financing</a></li>
+                <li><a href="{% url 'spk_financing' %}">SPK Financing</a></li>
+                <li><a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'history' %}">Riwayat Pengajuan</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main id="main">
+    {% block content %}
+    <!-- This is where child templates will inject content -->
+    {% endblock %}
+  </main>
+
+  <footer id="footer" class="footer accent-background">
+
+    <div class="container footer-top">
+        <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Financial Broker</span>
+            </a>
+            <p class="footdesc">FINANCIAL BROKER bukanlah Pinjol, perbankan, atau lembaga keuangan yang langsung memberikan pinjaman. Kami berperan sebagai penengah, mencarikan lembaga keuangan atau perbankan yang sesuai.</p>
+          </div>
+        
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Layanan Kami</h4>
+          <ul>
+            <li><a href="{% url 'kpr' %}">KPR</a></li>
+            <li><a href="{% url 'kredit_investasi' %}">Kredit Investasi</a></li>
+            <li><a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a></li>
+            <li><a href="{% url 'modal_kerja' %}">Modal Kerja</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4></h4>
+          <ul>
+            <li><a href="#"></a></li>
+            <li><a href="{% url 'take_over' %}">Take Over</a></li>
+            <li><a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a></li>
+            <li><a href="{% url 'invoice_po_spk_financing' %}">Invoice / PO / SPK Financing</a></li>
+            <li><a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Financial Broker</h4>
+          <ul>
+            <li><a href="{% url 'home' %}#about">Tentang Kami</a></li>
+            <li><a href="{% url 'why_us' %}">Mengapa Financial Broker</a></li>
+            <li><a href="{% url 'terms_condition' %}">Syarat dan Ketentuan</a></li>
+            <li><a href="{% url 'privacy_policy' %}">Kebijakan Privasi</a></li>
+          </ul>
+        </div>
+
+        <!-- <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                  <h4>Hubungi Kami</h4>
+                  <p><strong>Email:</strong> <span>info@example.com</span></p>
+                </div> -->
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2024</span> <strong class="px-1 sitename">Financial Broker ID.</strong> <span>Semua hak dilindungi.</span></p>
+      <div class="credits">
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+
+</html>

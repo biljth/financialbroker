@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Verifikasi Email - Masukkan Kode OTP Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Verifikasi email Anda dengan kode OTP yang dikirimkan oleh FINANCIAL BROKER untuk mengamankan akun Anda.
+{% endblock %}
+
+{% block meta_keywords %}
+verifikasi email, kode OTP, keamanan akun, FINANCIAL BROKER, verifikasi akun
+{% endblock %}
+
+{% block content %}
+<div class="testbox" style="margin-top: 150px; margin-bottom: 50px;">
+    <form method="post">
+        {% csrf_token %}
+        <label for="otp">Masukkan OTP yang telah dikirim ke email Anda:</label>
+        <input type="text" name="otp" required><br>
+        
+        <button type="submit">Verifikasi OTP</button>
+
+        {% if error_message %}
+            <p style="margin-top: 10px; margin-bottom: -10px;">{{ error_message }}</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

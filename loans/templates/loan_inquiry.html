@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Ajukan Pinjaman - Formulir Pengajuan Pinjaman | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Ajukan pinjaman Anda melalui formulir online FINANCIAL BROKER. Dapatkan penawaran pinjaman yang sesuai dengan kebutuhan finansial Anda.
+{% endblock %}
+
+{% block meta_keywords %}
+ajukan pinjaman, formulir pengajuan, pinjaman online, FINANCIAL BROKER, pengajuan kredit
+{% endblock %}
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="POST" action="{% url 'loan_inquiry' loan_type=loan_type %}">
+        {% csrf_token %}
+        <h1><strong>{{ loan_type }}</strong></h1>
+
+        <input type="hidden" name="loan_type" value="{{ loan_type }}">
+
+        <p>Lengkapi Informasi Berikut:</p>
+
+        <div class="item">
+            <label for="name">Nama Lengkap</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+            {{ form.name.help_text }}
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="email">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+            {{ form.email.help_text }}
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="domicile">Kota Domisili</label>
+            {{ form.domicile }}
+            {{ form.domicile.errors }}
+            {{ form.domicile.help_text }}
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="loan_amount">Plafon Pinjaman</label>
+            {{ form.loan_amount }}
+            {{ form.loan_amount.errors }}
+            {{ form.loan_amount.help_text }}
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="phone_number">Nomor Telepon</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.errors }}
+            {{ form.phone_number.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label>Jenis Kelamin</label><br>
+            <label><input type="radio" name="gender" value="male" required> Laki-laki</label>
+            <label><input type="radio" name="gender" value="female" required> Perempuan</label>
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label>
+                <input type="checkbox" name="terms" required>
+                Saya setuju dengan&nbsp; 
+                <a href="{% url 'terms_condition' %}" target="_blank">syarat dan ketentuan.</a>
+            </label>
+        </div>
+
+        <div class="btn-block" style="margin-top: 20px;">
+            <button type="submit">Ajukan Permohonan</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loanAmountInput = document.querySelector('.loan-amount');
+
+        loanAmountInput.addEventListener('input', function(e) {
+            // Remove non-numeric characters
+            let value = this.value.replace(/[^\d]/g, '');
+            // Format with periods
+            this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            // Store the unformatted value
+            this.setAttribute('data-unformatted-value', value);
+        });
+    });
+</script>
+{% endblock %}

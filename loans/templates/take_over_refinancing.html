@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Multiguna / Refinancing - Refinansiasi Kredit dengan Syarat Menguntungkan | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Manfaatkan Multiguna / Refinancing dari FINANCIAL BROKER untuk melunasi kredit lama dengan syarat yang lebih baik. Dapatkan suku bunga rendah dan tambahan dana tunai.
+{% endblock %}
+
+{% block meta_keywords %}
+Multiguna / Refinancing, refinansiasi kredit, suku bunga rendah, tambahan dana, solusi keuangan, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+              <a href="{% url 'kpr' %}">KPR</a>
+              <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+              <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+              <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+              <a href="{% url 'take_over' %}" class="active">Take Over</a>
+              <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+              <a href="{% url 'invoice_po_spk_financing' %}">Invoice / PO / SPK Financing</a>
+              <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+          </div>
+
+            <h4></h4>
+            <p></p>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>Multiguna / Refinancing</h3>
+            <p>
+                Multiguna / Refinancing adalah proses di mana seorang debitur memindahkan pinjaman yang ada dari satu bank ke bank lain dengan tujuan mendapatkan syarat-syarat kredit yang lebih menguntungkan. Dalam proses ini, debitur melunasi pinjaman yang ada dengan pinjaman baru dari bank yang berbeda, sering kali dengan suku bunga yang lebih rendah atau tenor yang lebih panjang. Ini memungkinkan debitur untuk mengurangi beban cicilan bulanan dan memperoleh lebih banyak fleksibilitas dalam pengelolaan keuangan mereka.
+            </p>
+            <p>
+                Refinancing tidak hanya bermanfaat untuk mengurangi cicilan, tetapi juga dapat digunakan untuk mendapatkan tambahan dana tunai dengan menjaminkan aset yang sama, seperti properti atau kendaraan. Proses ini cocok bagi mereka yang membutuhkan dana segar untuk keperluan seperti renovasi rumah, investasi, atau konsolidasi utang lainnya, tanpa harus mengambil pinjaman baru secara terpisah.
+            </p>
+            <p>
+                Secara umum, Multiguna Refinancing bisa menjadi solusi keuangan yang efektif bagi debitur yang ingin mengoptimalkan kondisi pinjaman mereka, sambil tetap menjaga kestabilan keuangan dalam jangka panjang.
+            </p>
+            <div class="d-flex">
+                <a href="/loan_inquiry/take_over_refinancing/" class="btn-custom">
+                    Ajukan Pinjaman <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+  <section id="faq" class="faq section" style="margin-top: -40px;">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="content px-xl-5">
+            <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+            <p>
+              FINANCIAL BROKER bertugas mencarikan lembaga keuangan yang sesuai dengan kebutuhan Anda. Kami fokus pada solusi pinjaman yang tepat, tanpa terlibat dalam pemberian pinjaman langsung.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="faq-container">
+            <div class="faq-item faq-active">
+              <h3><span class="num">1.</span> <span>Apa perbedaan Multiguna / Refinancing dengan Multiguna / Top Up?</span></h3>
+              <div class="faq-content">
+                <p>Refinancing fokus pada restrukturisasi pinjaman untuk mendapatkan suku bunga atau tenor yang lebih baik, sementara Top Up juga menambah jumlah pinjaman.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">2.</span> <span>Kapan waktu yang tepat untuk melakukan Multiguna / Refinancing?</span></h3>
+              <div class="faq-content">
+                <p>Ketika suku bunga pasar lebih rendah dari suku bunga KPR Anda saat ini, atau ketika Anda ingin mengurangi cicilan bulanan.
+                </p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /Faq Section -->
+
+{% endblock %}

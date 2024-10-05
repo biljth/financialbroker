@@ -1,0 +1,535 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+FINANCIAL BROKER - Solusi Keuangan Terbaik untuk Kebutuhan Anda
+{% endblock %}
+
+{% block meta_description %}
+FINANCIAL BROKER membantu Anda menemukan solusi pinjaman yang sesuai dengan kebutuhan Anda. Jelajahi berbagai opsi kredit dengan suku bunga rendah dan layanan yang dapat diandalkan.
+{% endblock %}
+
+{% block meta_keywords %}
+FINANCIAL BROKER, solusi keuangan, pinjaman, kredit, suku bunga rendah, pembiayaan, layanan keuangan
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="hero" class="hero section accent-background" style="background-color: #006559;">
+
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row gy-5 justify-content-between">
+        <div class="col-sm-6 order-2 order-sm-1 d-flex flex-column justify-content-center">
+          <h2><span>Financial </span><span class="accent">Broker</span></h2>
+          
+          <style>
+            .no-space1 {
+                margin-top: -30px;
+            }
+            .no-space2 {
+                margin-top: -22px;
+            }
+            @media (max-width: 768px) {
+              .col-sm-6 {
+                flex: 0 0 100%;
+                max-width: 90%;
+                padding: 0;
+                margin: 20px;
+                margin-right: 20px;
+                text-align: left; /* Ensure the text is aligned to the left */
+              }
+
+              .img-fluid {
+                position: absolute; /* Position the image on the right side */
+                right: 0;
+                max-width: 35%; /* Limit the image to 50% of the screen width */
+                height: auto;
+                top: 50px;
+                display: none;
+              }
+
+              .btn-get-started {
+                width: 100%; /* Make button full-width on smaller screens */
+                text-align: center;
+              }
+              .hero p {
+                font-size: 12px;
+              }
+              .hero h2{
+                font-size: 20px;
+              }
+              .full-width-text {
+                width: 100%;
+              }
+            }
+
+            @media (max-width: 768px) {
+              .btn-get-started {
+                width: 100%; /* Make button full-width on smaller screens */
+                text-align: center;
+                margin-bottom: -60px;
+              }
+            }
+
+        </style>
+
+
+        <p>Halo Calon Debitur,</p>
+        <p class="no-space1">Selamat datang di FINANCIAL BROKER!</p>
+        <p class="disclaimer">Disclaimer</p>
+        <p class="no-space2">FINANCIAL BROKER bukanlah platform pinjaman online atau lembaga keuangan yang memberikan pinjaman langsung. Kami fokus pada memberikan solusi dengan mencarikan lembaga keuangan yang sesuai, mulai dari KPR hingga Kredit Modal Kerja.</p>
+          
+        <div class="d-flex">
+            <a href="{% url 'kpr' %}" class="btn-get-started">Ajukan Pinjaman</a>
+          </div>
+        </div>
+        <div class="col-sm-6 order-1 order-sm-2">
+          <img src="{% static 'assets/img/hero-img.svg' %}" class="img-fluid" alt="">          
+        </div>
+      </div>
+    </div>
+
+    <div class="icon-boxes position-relative" data-aos="fade-up" data-aos-delay="200">
+      <div class="container position-relative">
+        <div class="row gy-4 mt-5">
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-home"></i></div>
+              <h4 class="title"><a href="{% url 'kpr' %}" class="stretched-link">KPR</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-money-check-alt"></i></div>
+              <h4 class="title"><a href="{% url 'kredit_investasi' %}" class="stretched-link">Kredit Investasi</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-sync"></i></div>
+              <h4 class="title"><a href="{% url 'multiguna_refinancing' %}" class="stretched-link">Multiguna / Refinancing</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-briefcase"></i></div>
+              <h4 class="title"><a href="{% url 'modal_kerja' %}" class="stretched-link">Modal Kerja</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          
+
+          <style>
+            .hero .icon-boxes::before {
+              content: none;
+            }
+
+            @media (max-width: 768px) {
+              .hero .icon-box .title {
+                font-size: 16px;
+              }
+              .hero .icon-box .icon {
+                font-size: 28px;
+              }
+            }
+
+            @media (min-width: 1280px) {
+              .img-fluid {
+                margin-left: 90px;
+              }
+            }
+            
+          </style>
+          
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-handshake"></i></div>
+              <h4 class="title"><a href="{% url 'take_over' %}" class="stretched-link">Take Over</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-lock"></i></div>
+              <h4 class="title"><a href="{% url 'jaminan_bpkb_alat_berat' %}" class="stretched-link">Jaminan BPKB / Alat Berat</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
+              <h4 class="title"><a href="{% url 'invoice_po_spk_financing' %}" class="stretched-link">Invoice / PO / SPK Financing</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-file-alt"></i></div>
+              <h4 class="title"><a href="{% url 'bridging_offering_letter' %}" class="stretched-link">Bridging Offering Letter</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+
+
+        </div>
+      </div>
+    </div>
+  
+  </section><!-- /Hero Section -->
+
+  <!-- About us Section -->
+  <section id="about" class="about-us container mt-5" style="margin-top: 20px; margin-bottom: 40px;">
+
+    <h1 class="text-center"><strong>Tentang Kami</strong></h1>
+    <p class="text-center mt-3">Selamat Datang di FINANCIAL BROKER!</p>
+    <p class="mt-4">
+      Kami adalah situs yang didedikasikan untuk membantu Anda, Calon Debitur, dalam menemukan lembaga
+      keuangan yang tepat sesuai kebutuhan pinjaman Anda. Di FINANCIAL BROKER, kami bukanlah penyedia
+      pinjaman langsung seperti pinjaman online (pinjol) atau bank. Sebagai perantara, kami berperan
+      penting dalam menghubungkan Anda dengan lembaga keuangan yang dapat menawarkan produk pinjaman
+      yang sesuai.
+  </p>
+  <p>
+      Misi kami adalah memberikan solusi yang tepat dengan cara mencarikan lembaga keuangan atau
+      perbankan yang sesuai dengan keperluan Anda, mulai dari Kredit Pemilikan Rumah (KPR) hingga
+      Kredit Modal Kerja. Kami memahami bahwa setiap kebutuhan pinjaman adalah unik, dan kami
+      berkomitmen untuk membantu Anda menemukan opsi yang paling sesuai dengan situasi finansial Anda.
+      Dalam dunia yang semakin kompleks ini, kami berusaha untuk menyederhanakan proses pencarian
+      pinjaman dan memberikan informasi yang jelas dan akurat.
+  </p>
+  <p>
+      Tim ahli kami siap membantu Anda melalui proses ini dengan memberikan saran dan rekomendasi yang
+      berdasarkan analisis menyeluruh. Kami percaya bahwa setiap calon debitur berhak mendapatkan
+      akses yang adil dan transparan ke berbagai pilihan pinjaman, sehingga Anda dapat membuat keputusan
+      yang lebih baik untuk masa depan keuangan Anda. Dengan pengalaman dan pengetahuan kami, kami
+      bertekad untuk menjadi mitra tepercaya Anda dalam perjalanan finansial ini.
+    </p>
+  </section>
+
+  <style>
+      .about-us {
+          background-color: #f9f9f9;
+          padding: 40px;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          margin: 20px auto;
+          max-width: 800px;
+      }
+      
+      .about-us h1 {
+          font-size: 32px;
+          color: #008374;
+          margin-bottom: 20px;
+      }
+      
+      .about-us p {
+          font-size: 18px;
+          line-height: 1.6;
+          color: #333;
+      }
+      
+      .about-us .text-center {
+          margin-bottom: 20px;
+      }
+
+      /* Responsive styles for smaller screens */
+      @media (max-width: 768px) {
+        .about-us {
+          padding: 20px;          /* Reduce padding */
+          max-width: 90%;         /* Allow section to take up more screen width */
+        }
+        
+        .about-us h1 {
+          font-size: 24px;        /* Reduce the font size for headings */
+          margin-bottom: 15px;    /* Adjust margin below the heading */
+        }
+        
+        .about-us p {
+          font-size: 14px;        /* Reduce paragraph font size */
+          line-height: 1.4;       /* Adjust line height for better readability */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-us {
+          padding: 15px;          /* Further reduce padding for very small screens */
+        }
+
+        .about-us h1 {
+          font-size: 20px;        /* Even smaller heading for extra small screens */
+          margin-bottom: 10px;
+        }
+        
+        .about-us p {
+          font-size: 14px;        /* Smaller paragraph font size */
+          line-height: 1.3;
+        }
+      }
+  </style> 
+  <!-- About us Section -->
+
+  <!-- Services Section -->
+  <section id="services" class="services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Wujudkan Tujuan Finansial Anda Bersama Kami</h2>
+      <p>Temukan solusi cerdas untuk KPR dan pembiayaan yang akan membantu Anda mencapai tujuan keuangan Anda.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item  position-relative">
+            <div class="icon">
+              <i class="bi bi-house-door-fill"></i>
+            </div>
+            <h3>Mewujudkan Rumah Impian Anda</h3>
+            <p>Dirancang untuk membantu individu dalam memperoleh KPR, baik untuk rumah pertama maupun investasi properti kedua.</p>
+            <p>
+              &nbsp;
+            </p>
+            <div>
+              <a href="{% url 'kpr_primary' %}" class="custom-link stretched-link">
+                  KPR Primary <i class="bi bi-arrow-right"></i>
+              </a>
+              <p>
+                &nbsp;
+              </p>
+            </div>
+            <div>
+              <a href="{% url 'kpr_secondary' %}" class="custom-link stretched-link">
+                  KPR Secondary <i class="bi bi-arrow-right"></i>
+              </a>
+              <p>
+                &nbsp;
+              </p>
+            </div>
+            <div>
+              <a href="{% url 'take_over_kpr' %}" class="custom-link stretched-link">
+                  Take Over KPR <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div><!-- End Service Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item position-relative">
+              <div class="icon">
+                  <i class="bi bi-cash-stack"></i>
+              </div>
+              <h3>Investasi Cerdas untuk Masa Depan yang Lebih Baik</h3>
+              <p>Dapatkan akses ke pembiayaan yang ideal untuk investasi properti Anda dengan kredit investasi yang menguntungkan.</p>
+              <p>
+                &nbsp;
+              </p>
+              <div>
+                <a href="{% url 'kredit_investasi' %}" class="custom-link stretched-link">
+                    Kredit Investasi <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+          </div>
+        </div><!-- End Service Item -->
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item position-relative">
+              <div class="icon">
+                  <i class="bi bi-briefcase-fill"></i>
+              </div>
+              <h3>Modal Kerja Fleksibel untuk Memajukan Bisnis Anda</h3>
+              <p>Kami menyediakan solusi pembiayaan yang tepat untuk modal kerja Anda, meningkatkan efisiensi dan potensi bisnis.</p>
+              <p>
+                &nbsp;
+              </p>
+              <div>
+                <a href="{% url 'modal_kerja' %}" class="custom-link stretched-link">
+                    Modal Kerja <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'take_over_modal_kerja' %}" class="custom-link stretched-link">
+                    Take Over Modal Kerja <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+          </div>
+      </div><!-- End Service Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item position-relative">
+              <div class="icon">
+                  <i class="bi bi-arrow-repeat"></i>
+              </div>
+              <h3>Solusi Multiguna dan Refinancing untuk Kebutuhan Finansial Anda</h3>
+              <p>Manfaatkan pembiayaan multiguna dan refinancing untuk mencapai tujuan keuangan Anda dengan lebih mudah.</p>
+              <p>
+                &nbsp;
+              </p>
+              <div>
+                <a href="{% url 'multiguna' %}" class="custom-link stretched-link">
+                    Multiguna <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'refinancing' %}" class="custom-link stretched-link">
+                    Refinancing <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'take_over_multiguna' %}" class="custom-link stretched-link">
+                    Take Over Multiguna <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+          </div>
+        </div><!-- End Service Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item position-relative">
+              <div class="icon">
+                  <i class="bi bi-shield-fill"></i>
+              </div>
+              <h3>Keamanan Aset Anda dengan Pembiayaan Jaminan yang Terpercaya</h3>
+              <p>Gunakan aset Anda sebagai jaminan untuk mendapatkan pembiayaan yang Anda butuhkan untuk berkembang.</p>
+              <p>
+                &nbsp;
+              </p>
+              <div>
+                <a href="{% url 'jaminan_bpkb' %}" class="custom-link stretched-link">
+                    Jaminan BPKB <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'jaminan_alat_berat' %}" class="custom-link stretched-link">
+                    Jaminan Alat Berat <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+          </div>
+        </div><!-- End Service Item -->
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-item position-relative">
+              <div class="icon">
+                  <i class="bi bi-lightbulb-fill"></i>
+              </div>
+              <h3>Inovasi Pembiayaan untuk Meningkatkan Potensi Bisnis Anda</h3>
+              <p>Ambil langkah maju dengan solusi inovatif dalam pembiayaan untuk mendukung pertumbuhan bisnis Anda.</p>
+              <p>
+                &nbsp;
+              </p>
+              <div>
+                <a href="{% url 'invoice_financing' %}" class="custom-link stretched-link">
+                    Invoice Financing <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'po_financing' %}" class="custom-link stretched-link">
+                    PO Financing <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'spk_financing' %}" class="custom-link stretched-link">
+                    SPK Financing <i class="bi bi-arrow-right"></i>
+                </a>
+                <p>
+                  &nbsp;
+                </p>
+              </div>
+              <div>
+                <a href="{% url 'bridging_offering_letter' %}" class="custom-link stretched-link">
+                    Bridging Offering Letter <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+          </div>
+        </div><!-- End Service Item -->
+
+  <!-- Faq Section -->
+  <section id="faq" class="faq section">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="content px-xl-5">
+            <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+            <p>
+              FINANCIAL BROKER bertugas mencarikan lembaga keuangan yang sesuai dengan kebutuhan Anda. Kami fokus pada solusi pinjaman yang tepat, tanpa terlibat dalam pemberian pinjaman langsung.            
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="faq-container">
+            <div class="faq-item faq-active">
+              <h3><span class="num">1.</span> <span>Apa itu FINANCIAL BROKER?</span></h3>
+              <div class="faq-content">
+                <p>FINANCIAL BROKER adalah situs yang membantu calon debitur menemukan lembaga keuangan yang tepat sesuai kebutuhan pinjaman, bukan sebagai penyedia pinjaman langsung.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">2.</span> <span>Bagaimana cara kerja FINANCIAL BROKER?</span></h3>
+              <div class="faq-content">
+                <p>Kami berperan sebagai perantara yang menghubungkan Anda dengan lembaga keuangan yang menawarkan produk pinjaman sesuai kebutuhan Anda, mulai dari KPR hingga Kredit Modal Kerja.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">3.</span> <span>Apakah FINANCIAL BROKER mengenakan biaya untuk layanan ini?</span></h3>
+              <div class="faq-content">
+                <p>Tidak, layanan kami tidak dikenakan biaya. Kami berkomitmen untuk membantu Anda tanpa biaya tambahan.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">4.</span> <span>Apa jenis pinjaman yang bisa saya temukan melalui FINANCIAL BROKER?</span></h3>
+              <div class="faq-content">
+                <p>Anda dapat menemukan berbagai jenis pinjaman, termasuk Kredit Pemilikan Rumah (KPR), Kredit Modal Kerja, dan produk pinjaman lainnya yang sesuai dengan kebutuhan finansial Anda.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">5.</span> <span>Bagaimana tim ahli FINANCIAL BROKER dapat membantu saya?</span></h3>
+              <div class="faq-content">
+                <p>Tim ahli kami memberikan saran dan rekomendasi berdasarkan analisis menyeluruh terhadap situasi finansial Anda, membantu Anda membuat keputusan yang lebih baik mengenai pinjaman.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /Faq Section -->
+{% endblock %}

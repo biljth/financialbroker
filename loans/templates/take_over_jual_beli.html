@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Take Over Jual Beli - Pembiayaan Jual Beli Properti | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Take Over Jual Beli memberikan solusi pembiayaan bagi Anda yang ingin melakukan transaksi jual beli properti dengan lebih mudah dan cepat.
+{% endblock %}
+
+{% block meta_keywords %}
+Take Over Jual Beli, pembiayaan properti, jual beli rumah, suku bunga kompetitif, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+<section id="service-details" class="service-details section" style="margin-top: 80px;">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="services-list">
+                    <a href="{% url 'kpr' %}">KPR</a>
+                    <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+                    <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+                    <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+                    <a href="{% url 'take_over' %}" class="active">Take Over</a>
+                    <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+                    <a href="{% url 'invoice_po_spk_financing' %}">Invoice / PO / SPK Financing</a>
+                    <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+                </div>
+            </div>
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <h3>Take Over Jual Beli</h3>
+                <p>
+                    Pembiayaan Take Over Jual Beli memungkinkan Anda untuk mengambil alih pinjaman dari pihak lain untuk mendapatkan kondisi yang lebih menguntungkan.
+                </p>
+                <p>
+                    Keuntungan dari Pembiayaan Take Over Jual Beli:
+                </p>
+                <p>
+                    <strong>Suku Bunga Kompetitif</strong>
+                    <br> Dapatkan suku bunga yang lebih rendah dengan mengambil alih pinjaman yang ada.
+                </p>
+                <p>
+                    <strong>Proses Mudah</strong>
+                    <br> Proses pengajuan yang cepat dan tidak rumit.
+                </p>
+                <p>
+                    <strong>Jangka Waktu Fleksibel</strong>
+                    <br> Sesuaikan jangka waktu pembayaran sesuai dengan kebutuhan Anda.
+                </p>
+    
+                <div class="d-flex">
+                    <a href="/loan_inquiry/take_over_jual_beli/" class="btn-custom">
+                        Ajukan Pinjaman <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section><!-- /Service Details Section -->
+    
+        <!-- Faq Section -->
+        <section id="faq" class="faq section" style="margin-top: -40px;">
+          <div class="container">
+            <div class="row gy-4">
+              <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="content px-xl-5">
+                  <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+                  <p>
+                    FINANCIAL BROKER siap membantu Anda dalam proses pengajuan Take Over Jual Beli.
+                  </p>
+                </div>
+              </div>
+    
+              <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-container">
+                  <div class="faq-item faq-active">
+                    <h3><span class="num">1.</span> <span>Apa itu Take Over Jual Beli?</span></h3>
+                    <div class="faq-content">
+                      <p>Take Over Jual Beli adalah proses pengalihan pinjaman dari pihak lain dengan tujuan mendapatkan suku bunga yang lebih baik.</p>
+                    </div>
+                    <i class="faq-toggle bi bi-chevron-right"></i>
+                  </div><!-- End Faq item-->
+    
+                  <div class="faq-item">
+                    <h3><span class="num">2.</span> <span>Siapa yang bisa mengajukan Take Over Jual Beli?</span></h3>
+                    <div class="faq-content">
+                      <p>Individu atau perusahaan yang memiliki pinjaman dan ingin mengambil alih pinjaman tersebut.</p>
+                    </div>
+                    <i class="faq-toggle bi bi-chevron-right"></i>
+                  </div><!-- End Faq item-->
+    
+                  <div class="faq-item">
+                    <h3><span class="num">3.</span> <span>Berapa lama proses pencairan dana?</span></h3>
+                    <div class="faq-content">
+                      <p>Proses pencairan dana dapat dilakukan dalam waktu 5 hingga 10 hari kerja setelah pengajuan diterima.</p>
+                    </div>
+                    <i class="faq-toggle bi bi-chevron-right"></i>
+                  </div><!-- End Faq item-->
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </section><!-- /Faq Section -->
+{% endblock %}

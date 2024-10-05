@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Multiguna / Refinancing - Pembiayaan Fleksibel | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Dapatkan pembiayaan Multiguna dan Refinancing dengan suku bunga bersaing melalui FINANCIAL BROKER untuk memenuhi kebutuhan finansial Anda.
+{% endblock %}
+
+{% block meta_keywords %}
+Multiguna, Refinancing, pembiayaan fleksibel, pinjaman, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+                <a href="{% url 'kpr' %}">KPR</a>
+                <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+                <a href="{% url 'multiguna_refinancing' %}" class="active">Multiguna / Refinancing</a>
+                <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+                <a href="{% url 'take_over' %}">Take Over</a>
+                <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+                <a href="{% url 'invoice_po_spk_financing' %}">Invoice / PO / SPK Financing</a>
+                <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+            </div>
+
+            <h4></h4>
+            <p></p>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>Multiguna / Refinancing</h3>
+            <p>
+                Pembiayaan Multiguna dan Refinancing adalah solusi finansial yang menawarkan fleksibilitas untuk kebutuhan uang tunai Anda. Dengan produk ini, Anda dapat menggabungkan beberapa pinjaman menjadi satu atau menggunakan aset yang dimiliki sebagai jaminan.
+            </p>
+            <p>
+                Beberapa keuntungan dari Multiguna/Refinancing adalah:
+            </p>
+            <p>
+                <strong>Pembiayaan Fleksibel</strong>
+                <br> Gunakan dana sesuai kebutuhan, baik untuk investasi, renovasi, atau kebutuhan sehari-hari.
+            </p>
+            <p>
+                <strong>Penghematan Bunga</strong>
+                <br> Gabungkan pinjaman dengan suku bunga tinggi menjadi satu pinjaman dengan suku bunga lebih rendah.
+            </p>
+            <p>
+                <strong>Proses Pengajuan Mudah</strong>
+                <br> Proses pengajuan yang cepat dan tidak rumit, memungkinkan Anda untuk segera mendapatkan dana.
+            </p>
+
+            <div>
+                <a href="{% url 'multiguna' %}" class="custom-link stretched-link">
+                    Multiguna <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'refinancing' %}" class="custom-link stretched-link">
+                    Refinancing <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+              
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+  <section id="faq" class="faq section" style="margin-top: -40px;">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="content px-xl-5">
+            <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+            <p>
+              FINANCIAL BROKER menyediakan solusi finansial yang sesuai untuk kebutuhan Multiguna dan Refinancing Anda.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="faq-container">
+            <div class="faq-item faq-active">
+              <h3><span class="num">1.</span> <span>Apa itu Multiguna dan Refinancing?</span></h3>
+              <div class="faq-content">
+                <p>Multiguna adalah pembiayaan yang fleksibel, sementara Refinancing adalah proses menggabungkan pinjaman dengan suku bunga lebih rendah.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">2.</span> <span>Siapa yang bisa mengajukan?</span></h3>
+              <div class="faq-content">
+                <p>Individu atau perusahaan yang memiliki aset yang bisa dijadikan jaminan dapat mengajukan pembiayaan ini.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">3.</span> <span>Berapa lama proses pencairan dana?</span></h3>
+              <div class="faq-content">
+                <p>Proses pencairan dana dapat memakan waktu antara 5 hingga 10 hari kerja setelah pengajuan diterima.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /Faq Section -->
+
+{% endblock %}

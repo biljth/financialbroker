@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Daftar Pengajuan - Lihat Pengajuan Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Lihat riwayat pengajuan pinjaman Anda dengan FINANCIAL BROKER. Pantau status pengajuan Anda secara mudah di halaman Daftar Pengajuan.
+{% endblock %}
+
+{% block meta_keywords %}
+Daftar pengajuan, riwayat pengajuan, status pengajuan, FINANCIAL BROKER, cek pengajuan
+{% endblock %}
+<!-- margin-top: 100px -->
+
+{% block content %}
+<div class="inquiry-list-container">
+    <div class="inquiry-title">Daftar Permohonan Pinjaman</div>
+    <div class="inquiry-list">
+        {% for inquiry in inquiries %}
+            <div class="inquiry-item">
+                <p><strong>Nama Lengkap:</strong> {{ inquiry.name }}</p>
+                <p><strong>Email:</strong> {{ inquiry.email }}</p>
+                <p><strong>Plafon Pinjaman:</strong> {{ inquiry.formatted_loan_amount }}</p>
+                <p><strong>Jenis Kelamin:</strong> {{ inquiry.gender }}</p>
+                <p><strong>Tipe Pinjaman:</strong> {{ inquiry.loan_type }}</p>
+                <p><strong>Tanggal Permohonan:</strong> {{ inquiry.submitted_at }}</p>
+            
+                <!-- <div class="dropdown">
+                    <span class="three-dots">⋮</span>
+                    <div class="dropdown-content">
+                        <span class="delete-button" style="display:none;">Hapus</span>
+                        <form method="POST" action="{% url 'delete_inquiry' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="email" value="{{ inquiry.email }}">
+                            <input type="hidden" name="submitted_at" value="{{ inquiry.submitted_at }}">
+                            <button type="submit" class="delete-button">Hapus</button>
+                        </form>
+                    </div>
+                </div> -->
+
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.three-dots').forEach(dot => {
+        dot.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent event bubbling
+            const deleteButton = this.nextElementSibling;
+            const form = deleteButton.nextElementSibling;
+            
+            // Toggle visibility of "Hapus" text and form
+            deleteButton.style.display = deleteButton.style.display === 'inline' ? 'none' : 'inline';
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+
+    // Close "Hapus" text when clicking outside
+    window.addEventListener('click', function() {
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.style.display = 'none';
+        });
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.style.display = 'none';
+        });
+    });
+</script>
+
+{% endblock %}

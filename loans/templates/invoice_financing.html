@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Invoice Financing - Solusi Likuiditas Bisnis Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Percepat arus kas bisnis Anda dengan Invoice Financing dari FINANCIAL BROKER. Dapatkan dana lebih awal dengan menjadikan faktur sebagai jaminan.
+{% endblock %}
+
+{% block meta_keywords %}
+Invoice Financing, solusi likuiditas, pembiayaan faktur, arus kas bisnis, jaminan faktur, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+              <a href="{% url 'kpr' %}">KPR</a>
+              <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+              <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+              <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+              <a href="{% url 'take_over' %}">Take Over</a>
+              <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+              <a href="{% url 'invoice_po_spk_financing' %}" class="active">Invoice / PO / SPK Financing</a>
+              <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+          </div>
+
+            <h4></h4>
+            <p></p>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>Invoice Financing</h3>
+            <p>
+                Invoice Financing adalah fasilitas pembiayaan yang ditawarkan oleh bank atau lembaga keuangan dengan menggunakan faktur (invoice) yang belum terbayar sebagai jaminan. Dalam skema ini, perusahaan yang memiliki piutang dari klien dapat mencairkan dana lebih awal melalui lembaga keuangan, sehingga meningkatkan arus kas tanpa harus menunggu pembayaran dari klien. 
+            </p>
+            <p>
+                Lembaga keuangan akan memberikan dana sesuai dengan persentase tertentu dari nilai faktur, yang memungkinkan perusahaan untuk mendapatkan likuiditas yang dibutuhkan dalam waktu singkat. Ketika klien melakukan pembayaran atas faktur tersebut, dana yang diterima akan digunakan untuk melunasi pinjaman yang telah diambil.
+            </p>
+            <p>
+                <strong>Meningkatkan Arus Kas</strong>
+                <br> Invoice Financing membantu perusahaan untuk mempertahankan arus kas yang stabil, mengurangi risiko keterlambatan pembayaran dari klien yang dapat mengganggu operasi bisnis.
+            </p>
+            <p>
+                <strong>Fleksibilitas Pembiayaan</strong>
+                <br> Dengan menggunakan faktur sebagai jaminan, perusahaan tidak perlu menjaminkan aset lain, sehingga memberikan fleksibilitas dalam pengelolaan dana.
+            </p>
+            <p>
+                <strong>Proses Pengajuan yang Cepat</strong>
+                <br> Proses pengajuan untuk Invoice Financing cenderung lebih cepat dibandingkan jenis pinjaman lainnya, karena didasarkan pada dokumen faktur yang sudah ada, memudahkan perusahaan untuk mendapatkan dana segera.
+            </p>
+            <p>
+                Dengan berbagai manfaat ini, Invoice Financing menjadi solusi efektif bagi perusahaan yang membutuhkan dana cepat untuk mendukung arus kas dan kegiatan operasional mereka.
+            </p>
+            
+            <div class="d-flex">
+                <a href="/loan_inquiry/invoice_financing/" class="btn-custom">
+                    Ajukan Pinjaman <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+  <section id="faq" class="faq section" style="margin-top: -40px;">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="content px-xl-5">
+            <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+            <p>
+              FINANCIAL BROKER bertugas mencarikan lembaga keuangan yang sesuai dengan kebutuhan Anda. Kami fokus pada solusi pinjaman yang tepat, tanpa terlibat dalam pemberian pinjaman langsung.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="faq-container">
+            <div class="faq-item faq-active">
+              <h3><span class="num">1.</span> <span>Apa itu Invoice Financing?</span></h3>
+              <div class="faq-content">
+                <p>Invoice Financing adalah pinjaman yang diberikan dengan menggunakan tagihan atau invoice sebagai jaminan.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">2.</span> <span>Berapa persentase dari nilai invoice yang bisa dipinjam?</span></h3>
+              <div class="faq-content">
+                <p>Biasanya sekitar 70%-90% dari nilai invoice, tergantung pada kebijakan bank.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">3.</span> <span>Apa risiko dari Invoice Financing?</span></h3>
+              <div class="faq-content">
+                <p>Jika klien Anda tidak membayar invoice, Anda tetap bertanggung jawab untuk melunasi pinjaman kepada bank.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /Faq Section -->
+
+{% endblock %}

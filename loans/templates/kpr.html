@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+KPR - Pembiayaan untuk Rumah Impian Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Ajukan pembiayaan KPR untuk membeli rumah dengan suku bunga kompetitif dan syarat yang mudah melalui FINANCIAL BROKER.
+{% endblock %}
+
+{% block meta_keywords %}
+KPR, Kredit Pemilikan Rumah, pembiayaan rumah, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+              <a href="{% url 'kpr' %}" class="active">KPR</a>
+              <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+              <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+              <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+              <a href="{% url 'take_over' %}">Take Over</a>
+              <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+              <a href="{% url 'invoice_po_spk_financing' %}">Invoice / PO / SPK Financing</a>
+              <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>KPR (Kredit Pemilikan Rumah)</h3>
+            <p>
+                Pembiayaan KPR memberikan kesempatan bagi Anda untuk memiliki rumah impian dengan syarat yang kompetitif.
+            </p>
+            <p>
+                Keuntungan dari Pembiayaan KPR:
+            </p>
+            <p>
+                <strong>Suku Bunga Kompetitif</strong>
+                <br> Dapatkan suku bunga yang menarik untuk pembiayaan rumah Anda.
+            </p>
+            <p>
+                <strong>Jangka Waktu Fleksibel</strong>
+                <br> Sesuaikan jangka waktu pembayaran sesuai dengan kemampuan finansial Anda.
+            </p>
+            <p>
+                <strong>Proses Pengajuan Mudah</strong>
+                <br> Nikmati proses pengajuan yang cepat dan tidak rumit.
+            </p>
+
+            <div>
+              <a href="{% url 'kpr_primary' %}" class="custom-link stretched-link">
+                  KPR Primary <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            <div>
+              <a href="{% url 'kpr_secondary' %}" class="custom-link stretched-link">
+                  KPR Secondary <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section" style="margin-top: -40px;">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              <p>
+                FINANCIAL BROKER siap membantu Anda dalam proses pengajuan KPR.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>Apa itu KPR?</span></h3>
+                <div class="faq-content">
+                  <p>KPR adalah fasilitas pembiayaan untuk membantu Anda membeli rumah dengan cicilan yang terjangkau.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>Siapa yang bisa mengajukan KPR?</span></h3>
+                <div class="faq-content">
+                  <p>Individu yang berpenghasilan tetap dan memiliki rencana untuk membeli rumah dapat mengajukan KPR.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>Berapa lama proses pencairan dana?</span></h3>
+                <div class="faq-content">
+                  <p>Proses pencairan dana KPR dapat dilakukan dalam waktu 5 hingga 10 hari kerja setelah pengajuan diterima.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">4.</span> <span>Bagaimana cara menghitung angsuran KPR?</span></h3>
+                <div class="faq-content">
+                  <p>Angsuran KPR dapat dihitung berdasarkan jumlah pinjaman, suku bunga, dan jangka waktu pinjaman.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Faq Section -->
+
+{% endblock %}

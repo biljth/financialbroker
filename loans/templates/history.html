@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Riwayat Pengajuan - Lihat Pengajuan Sebelumnya | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Lihat riwayat pengajuan pinjaman Anda di halaman Riwayat Pengajuan FINANCIAL BROKER. 
+{% endblock %}
+
+{% block meta_keywords %}
+riwayat pengajuan, pengajuan sebelumnya, status pengajuan, FINANCIAL BROKER, cek riwayat
+{% endblock %}
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Nama Lengkap:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label for="phone_number">Nomor Telepon:</label>
+        <input type="text" name="phone_number" required><br>
+
+        <button type="submit">Cek Riwayat</button>
+
+        {% if error_message %}
+        <div class="alert alert-danger" style="margin-top: 20px;">
+            {{ error_message }}
+        </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

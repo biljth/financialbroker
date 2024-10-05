@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+SPK Financing - Pembiayaan Berdasarkan Surat Perintah Kerja | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Dapatkan SPK Financing untuk mendanai proyek berdasarkan surat perintah kerja dengan syarat yang mudah melalui FINANCIAL BROKER.
+{% endblock %}
+
+{% block meta_keywords %}
+SPK Financing, pembiayaan SPK, investasi, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+                <a href="{% url 'kpr' %}">KPR</a>
+                <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+                <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+                <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+                <a href="{% url 'take_over' %}">Take Over</a>
+                <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+                <a href="{% url 'invoice_po_spk_financing' %}" class="active">Invoice / PO / SPK Financing</a>
+                <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+              </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>SPK Financing</h3>
+            <p>
+                SPK Financing adalah pembiayaan yang dirancang untuk mendanai proyek yang didasarkan pada Surat Perintah Kerja (SPK) Anda. Dengan pembiayaan ini, Anda dapat menjalankan proyek dengan lancar tanpa khawatir tentang pendanaan.
+            </p>
+            <p>
+                Keuntungan dari SPK Financing:
+            </p>
+            <p>
+                <strong>Pendanaan Proyek yang Lancar</strong>
+                <br> Dapatkan dana untuk menjalankan proyek sesuai dengan SPK Anda.
+            </p>
+            <p>
+                <strong>Syarat yang Mudah</strong>
+                <br> Proses pengajuan yang cepat dan tidak rumit.
+            </p>
+            <p>
+                <strong>Fleksibilitas dalam Pengelolaan Proyek</strong>
+                <br> Memungkinkan Anda untuk mengelola proyek dengan lebih baik tanpa kendala finansial.
+            </p>
+
+            <div class="d-flex">
+                <a href="/loan_inquiry/spk_financing/" class="btn-custom">
+                    Ajukan Pinjaman <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section" style="margin-top: -40px;">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              <p>
+                FINANCIAL BROKER siap membantu Anda dalam proses pengajuan SPK Financing.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>Apa itu SPK Financing?</span></h3>
+                <div class="faq-content">
+                  <p>SPK Financing adalah pembiayaan yang diberikan untuk mendanai proyek berdasarkan Surat Perintah Kerja (SPK).</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>Siapa yang bisa mengajukan SPK Financing?</span></h3>
+                <div class="faq-content">
+                  <p>Perusahaan yang memiliki proyek dengan SPK dapat mengajukan pembiayaan ini untuk mendukung pelaksanaan proyek.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>Berapa lama proses pencairan dana?</span></h3>
+                <div class="faq-content">
+                  <p>Proses pencairan dana dapat dilakukan dalam waktu singkat, biasanya dalam 5 hingga 7 hari kerja.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+{% endblock %}

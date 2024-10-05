@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Take Over KPR - Pindahkan Kredit Rumah Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Pindahkan Kredit Pemilikan Rumah (KPR) Anda ke bank dengan suku bunga yang lebih rendah melalui layanan Take Over KPR dari FINANCIAL BROKER. Nikmati cicilan lebih ringan dan manfaat lainnya.
+{% endblock %}
+
+{% block meta_keywords %}
+Take Over KPR, pindah kredit rumah, suku bunga rendah, cicilan ringan, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section" style="margin-top: 80px;">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-list">
+              <a href="{% url 'kpr' %}">KPR</a>
+              <a href="{% url 'kredit_investasi' %}">Kredit Investasi</a>
+              <a href="{% url 'multiguna_refinancing' %}">Multiguna / Refinancing</a>
+              <a href="{% url 'modal_kerja' %}">Modal Kerja</a>
+              <a href="{% url 'take_over' %}" class="active">Take Over</a>
+              <a href="{% url 'jaminan_bpkb_alat_berat' %}">Jaminan BPKB / Alat Berat</a>
+              <a href="{% url 'invoice_po_spk_financing' %}">Invoice / PO / SPK Financing</a>
+              <a href="{% url 'bridging_offering_letter' %}">Bridging Offering Letter</a>
+          </div>
+
+            <h4></h4>
+            <p></p>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h3>Take Over KPR</h3>
+            <p>
+                Take Over KPR adalah proses pengalihan Kredit Pemilikan Rumah (KPR) dari satu bank ke bank lain atau dari satu pihak ke pihak lain. Proses ini dilakukan untuk mendapatkan suku bunga yang lebih rendah, memperpanjang tenor, atau memperoleh manfaat lain yang lebih menguntungkan bagi debitur.
+            </p>
+            <p>
+                Ada dua jenis Take Over KPR yang umum:
+            </p>
+            <p>
+                <strong>Take Over antar bank</strong>
+                <br> Pemilik KPR memindahkan pinjaman dari bank asal ke bank lain yang menawarkan suku bunga atau skema pembayaran yang lebih baik. Ini dilakukan untuk memperoleh cicilan yang lebih ringan, bunga yang lebih rendah, atau fasilitas yang lebih baik dari bank baru.
+            </p>
+            <p>
+                <strong>Take Over antar individu</strong>
+                <br> KPR yang sedang berjalan dialihkan dari pemilik rumah sebelumnya kepada pemilik rumah baru, biasanya dalam rangka transaksi jual beli rumah. Pembeli rumah mengambil alih sisa cicilan KPR dari penjual.
+            </p>
+            <p>
+                Proses take over biasanya melibatkan penilaian ulang properti, pengajuan dokumen, dan persetujuan dari bank yang akan menerima pengalihan kredit tersebut.
+            </p>
+        
+            <div class="d-flex">
+                <a href="/loan_inquiry/take_over_kpr/" class="btn-custom">
+                    Ajukan Pinjaman <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+           </div> 
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+    <!-- Faq Section -->
+  <section id="faq" class="faq section" style="margin-top: -40px;">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="content px-xl-5">
+            <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+            <p>
+              FINANCIAL BROKER bertugas mencarikan lembaga keuangan yang sesuai dengan kebutuhan Anda. Kami fokus pada solusi pinjaman yang tepat, tanpa terlibat dalam pemberian pinjaman langsung.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="faq-container">
+            <div class="faq-item faq-active">
+              <h3><span class="num">1.</span> <span>Apa itu Take Over KPR?</span></h3>
+              <div class="faq-content">
+                <p>Take Over KPR adalah proses memindahkan pinjaman KPR dari bank satu ke bank lain dengan tujuan mendapatkan suku bunga lebih rendah atau keuntungan lainnya.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">3.</span> <span>Apa keuntungan melakukan Take Over KPR?</span></h3>
+              <div class="faq-content">
+                <p>Anda bisa mendapatkan suku bunga yang lebih rendah, biaya lebih rendah, atau kondisi yang lebih menguntungkan di bank baru.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+            <div class="faq-item">
+              <h3><span class="num">2.</span> <span>Bagaimana proses Take Over KPR dilakukan?</span></h3>
+              <div class="faq-content">
+                <p>Anda harus mengajukan permohonan ke bank baru, menyiapkan dokumen, dan bank baru akan melunasi sisa pinjaman di bank lama.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /Faq Section -->
+
+{% endblock %}
