@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-b54in-$^znw_i++y8f5a7(3hs+_1n$-00g3cvk_ev+4ydb4c6x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['financialbrokerid.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['financialbroker.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -77,15 +77,9 @@ WSGI_APPLICATION = 'loanmarket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'loanmarket',
-        'HOST': '127.0.0.1',
-        'USER': 'root',
-        'PASSWORD': 'sql0105',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 # Password validation

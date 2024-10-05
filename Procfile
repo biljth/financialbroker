@@ -1,1 +1,1 @@
-web: gunicorn loanmarket.wsgi--log-file -
+web: gunicorn loanmarket.wsgi --log-file -
