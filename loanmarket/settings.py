@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b54in-$^znw_i++y8f5a7(3hs+_1n$-00g3cvk_ev+4ydb4c6x'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-b54in-$^znw_i++y8f5a7(3hs+_1n$-00g3cvk_ev+4ydb4c6x')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'loanmarket.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
 }
 
 # Password validation
