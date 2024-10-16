@@ -165,9 +165,9 @@ def verify_otp_loan(request):
                     <p style="color: #000000;"><strong>Nama:</strong> {inquiry.name}</p>
                     <p style="color: #000000;"><strong>Email:</strong> {inquiry.email}</p>
                     <p style="color: #000000;"><strong>Domisili:</strong> {inquiry.domicile}</p>
-                    <p style="color: #000000;"><strong>Plafon Pinjaman:</strong> {format(int(inquiry.loan_amount), ',').replace(',', '.')}</p>
                     <p style="color: #000000;"><strong>Nomor Telepon:</strong> {inquiry.phone_number}</p>
                     <p style="color: #000000;"><strong>Jenis Kelamin:</strong> {gender_map.get(inquiry.gender, inquiry.gender)}</p>
+                    <p style="color: #000000;"><strong>Plafon Pinjaman:</strong> {format(int(inquiry.loan_amount), ',').replace(',', '.')}</p>
                     <p style="color: #000000;"><strong>Tipe Pinjaman:</strong> {inquiry.loan_type}</p>
                 </div>
             </body>
@@ -178,7 +178,7 @@ def verify_otp_loan(request):
                 email_subject,
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
-                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@yahoo.com','wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the user's email
+                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com','wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the user's email
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
