@@ -411,3 +411,6 @@ def take_over_top_up(request):
 
 def take_over_refinancing(request):
     return render(request, 'take_over_refinancing.html')
+
+def sitemap(request):
+    return render(request, 'sitemap.xml')
