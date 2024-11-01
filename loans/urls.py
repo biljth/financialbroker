@@ -36,4 +36,5 @@ urlpatterns = [
     path('spk-financing/', views.spk_financing, name='spk_financing'),
     path('invoice-financing/', views.invoice_financing, name='invoice_financing'),
     path('bridging-offering-letter/', views.bridging_offering_letter, name='bridging_offering_letter'),
+    path('sitemap.xml', views.sitemap, name='sitemap'),
 ]
