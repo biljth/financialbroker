@@ -27,3 +27,23 @@ function addCommas(nStr) {
     }
     return x1 + x2
 }
+
+window.onload = function() {
+    if (!localStorage.getItem("popupShown")) {
+      document.getElementById("popupModal").style.display = "block";
+      localStorage.setItem("popupShown", "true");
+    }
+  };
+  
+  // Close the popup when the user clicks the close button
+  document.querySelector(".close-btn").onclick = function() {
+    document.getElementById("popupModal").style.display = "none";
+  };
+  
+  // Close the popup if the user clicks outside the content
+  window.onclick = function(event) {
+    const modal = document.getElementById("popupModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };

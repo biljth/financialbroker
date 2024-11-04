@@ -289,3 +289,55 @@ input[type="radio"] {
     color: #00B19A; /* Change color on hover */
     cursor: pointer; /* Change cursor to pointer on hover */
 }
+
+/* Modal background */
+.popup-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Close button positioned outside the image */
+  .close-btn {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    color: #fff;
+    background: #333;
+    padding: 8px 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    background: #000;
+  }
+  
+  /* Modal content */
+  .popup-content {
+    background-color: transparent;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Image styling */
+  .popup-image {
+    width: 120%;
+    height: auto;
+    border-radius: 8px;
+    margin-left: -40px;
+  }
