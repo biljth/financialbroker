@@ -29,8 +29,9 @@ function addCommas(nStr) {
 }
 
 window.onload = function() {
+    const popupModal = document.getElementById("popupModal");
     if (!localStorage.getItem("popupShown")) {
-      document.getElementById("popupModal").style.display = "block";
+      popupModal.style.display = "flex"; // Show modal in flex mode
       localStorage.setItem("popupShown", "true");
     }
   };
@@ -47,3 +48,5 @@ window.onload = function() {
       modal.style.display = "none";
     }
   };
+
+  
