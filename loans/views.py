@@ -106,7 +106,7 @@ def loan_inquiry(request, loan_type):
             send_mail(
                 email_subject,
                 '',
-                'Financial Broker <financialbrokerid@gmail.com>',
+                'Financial Broker <emailcumanbuat@gmail.com>',
                 [inquiry.email],  # Send to the user's email
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
@@ -177,8 +177,8 @@ def verify_otp_loan(request):
             send_mail(
                 email_subject,
                 '',
-                'Financial Broker <financialbrokerid@gmail.com>',
-                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com','wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the user's email
+                'Financial Broker <emailcumanbuatgame@gmail.com>',
+                ['emailcumanbuatgame@gmail.com'],  # Send to the user's email
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
