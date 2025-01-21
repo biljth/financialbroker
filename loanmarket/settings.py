@@ -29,7 +29,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-b54in-$^znw_i+
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['financialbroker.id',
+    'web-production-1dbb.up.railway.app',
+    'localhost',
+    '127.0.0.1',]
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
@@ -80,21 +83,21 @@ WSGI_APPLICATION = 'loanmarket.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
-# database_url = os.environ.get("DATABASE_URL")
-# DATABASES["default"] = dj_database_url.parse(database_url)
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=f"postgresql://{os.getenv('PGUSER')}:{os.getenv('PGPASSWORD')}@{os.getenv('PGHOST')}:{os.getenv('PGPORT', '5432')}/{os.getenv('PGDATABASE')}"
-    )
+    'default': {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
+
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=f"postgresql://{os.getenv('PGUSER')}:{os.getenv('PGPASSWORD')}@{os.getenv('PGHOST')}:{os.getenv('PGPORT', '5432')}/{os.getenv('PGDATABASE')}"
+#     )
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
