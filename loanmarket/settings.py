@@ -76,9 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'loanmarket.wsgi.application'
 
-env = environ.Env()
-environ.Env.read_env()
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
