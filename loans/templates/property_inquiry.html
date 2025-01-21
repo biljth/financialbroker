@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Ajukan Permintaan Informasi Properti | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Ajukan permintaan informasi untuk properti yang sesuai dengan kebutuhan Anda melalui FINANCIAL BROKER. Temukan properti ideal Anda sekarang!
+
+{% endblock %}
+
+{% block meta_keywords %}
+permintaan informasi properti, properti ideal, FINANCIAL BROKER, informasi properti, ajukan properti
+{% endblock %}
+
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="POST" action="{% url 'property_inquiry' property_id=property.id %}">
+        {% csrf_token %}
+        <h1><strong>{{ property.title }}</strong></h1>
+
+        <input type="hidden" name="property_id" value="{{ property.id }}">
+
+        <p>Lengkapi Informasi Berikut:</p>
+
+        <div class="item">
+            <label for="name">Nama Lengkap</label>
+            {{ form.name }}
+            {{ form.name.help_text }}
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="email">Email</label>
+            {{ form.email }}
+            {{ form.email.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="phone_number">Nomor Telepon</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.help_text }}
+        </div>
+
+        <div class="btn-block" style="margin-top: 20px;">
+            <button type="submit">Ajukan Permohonan</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneNumberInput = document.querySelector('input[name="phone_number"]');
+
+        phoneNumberInput.addEventListener('input', function(e) {
+            // Remove non-numeric characters
+            let value = this.value.replace(/[^\d]/g, '');
+            // Format with spaces every four digits
+            this.value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            // Store the unformatted value
+            this.setAttribute('data-unformatted-value', value);
+        });
+    });
+</script>
+{% endblock %}

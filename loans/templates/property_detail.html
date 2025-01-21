@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Detail Properti - Temukan Properti Impian Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Lihat detail lengkap properti pilihan Anda di FINANCIAL BROKER. Properti terbaik dengan informasi lengkap untuk memenuhi kebutuhan Anda.
+{% endblock %}
+
+{% block meta_keywords %}
+detail properti, properti impian, FINANCIAL BROKER, informasi properti, properti terbaik
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container py-5" style="margin-top: 80px;">
+    <div class="row">
+        <!-- Property Image Section -->
+        <div class="col-lg-6">
+            {% if property.image %}
+                <img class="img-fluid rounded shadow square-image" src="{{ property.image.url }}" alt="{{ property.title }}">
+            {% else %}
+                <img class="img-fluid rounded shadow" src="/static/images/default-property.jpg" alt="No Image Available">
+            {% endif %}
+        </div>
+
+        <!-- Property Details Section -->
+        <div class="col-lg-6">
+            <h1 class="mb-3">{{ property.title }}</h1>
+            <h3 class="text-primary mb-4">Rp {{ property.price|format_price }}</h3>
+            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ property.location }}</p>
+            <p><i class="fa fa-ruler-combined text-primary me-2"></i> {{ property.area }} m²</p>
+            <p><i class="fa fa-bed text-primary me-2"></i> {{ property.bedrooms }} Kamar Tidur</p>
+            <p><i class="fa fa-bath text-primary me-2"></i> {{ property.bathrooms }} Kamar Mandi</p>
+            <p><i class="fa fa-building text-primary me-2"></i> {{ property.property_type|title }}</p>
+
+            <!-- Property Description -->
+            <h5 class="mt-4">Description</h5>
+            <p>{{ property.description }}</p>
+
+            <!-- Action Buttons -->
+            <div class="mt-4">
+                <a href="{% url 'property_list' %}" class="btn btn-outline-secondary">
+                    <i class="fa fa-arrow-left me-2"></i>Kembali
+                </a>
+                <div class="d-flex">
+                    <a href="{% url 'property_inquiry' property.id %}" class="btn-custom">
+                        Ajukan Permohonan <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- <div class="property-detail">
+    <h1>{{ property.title }}</h1>
+    <p>{{ property.description }}</p>
+    <p><strong>Price:</strong> ${{ property.price }}</p>
+    <p><strong>Location:</strong> {{ property.location }}</p>
+    <img src="{{ property.image.url }}" alt="{{ property.title }}">
+    <p><strong>Area:</strong> {{ property.area }} m²</p>
+    <p><strong>Bedrooms:</strong> {{ property.bedrooms }}</p>
+    <p><strong>Bathrooms:</strong> {{ property.bathrooms }}</p>
+</div> -->

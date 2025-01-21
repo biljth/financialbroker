@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.mail import send_mail
-from .forms import LoanInquiryForm, HistoryForm
-from .models import LoanInquiry
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse
+from .forms import LoanInquiryForm, HistoryForm, PropertySearchForm, PropertyForm, PropertyInquiryForm, AdsForm
+from .models import Property, LoanInquiry, PropertyInquiry, AdsInquiry
 import random
 
 
@@ -313,6 +317,10 @@ def terms_condition(request):
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
 
+def perjanjian(request):
+    return render(request, 'perjanjian.html')
+
+
 def inquiry_list(request):
     inquiries = request.session.get('user_inquiries', [])
     for inquiry in inquiries:
@@ -339,6 +347,391 @@ def delete_inquiry(request):
         return redirect('inquiry_list')  # Adjust this URL name as needed
 
     return redirect('inquiry_list')
+
+def property_list(request):
+    # Initialize the search form with GET data
+    form = PropertySearchForm(request.GET)
+
+    # Start with all properties
+    properties = Property.objects.all()
+
+    # Apply filters if the form is valid
+    if form.is_valid():
+        # Filter by location
+        location = form.cleaned_data.get('location')
+        if location:
+            properties = properties.filter(location__icontains=location)
+
+        # Filter by area
+        min_area = form.cleaned_data.get('min_area')
+        max_area = form.cleaned_data.get('max_area')
+        if min_area:
+            properties = properties.filter(area__gte=min_area)
+        if max_area:
+            properties = properties.filter(area__lte=max_area)
+
+        # Filter by price range
+        min_price = form.cleaned_data.get('min_price')
+        max_price = form.cleaned_data.get('max_price')
+        if min_price:
+            properties = properties.filter(price__gte=min_price)
+        if max_price:
+            properties = properties.filter(price__lte=max_price)
+
+    # Pass the filtered properties and form to the template
+    return render(request, 'property_list.html', {'properties': properties, 'form': form})
+
+def property_inquiry(request, property_id):
+    # Get the property object
+    property = get_object_or_404(Property, id=property_id)
+
+    if request.method == 'POST':
+        form = PropertyInquiryForm(request.POST)
+        form.instance.property = property  # Link the inquiry to the property
+        if form.is_valid():
+            # Save the inquiry
+            inquiry = form.save()
+
+            # Generate OTP
+            otp = str(random.randint(100000, 999999))  # Generate a 6-digit OTP
+            request.session['otp'] = otp
+            request.session['inquiry_id'] = inquiry.id
+
+            # Prepare the OTP email content
+            email_subject = 'Verifikasi OTP untuk Permintaan Informasi Properti'
+            email_body = f"""
+            <html>
+                <head>
+                    <style>
+                        body {{
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            padding: 20px;
+                            color: #333;
+                        }}
+                        .email-container {{
+                            background-color: #ffffff;
+                            padding: 20px;
+                            border-radius: 5px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }}
+                        .email-title {{
+                            color: #008374;
+                            font-size: 28px;
+                            margin-bottom: 10px;
+                        }}
+                        .email-greeting {{
+                            font-size: 18px;
+                        }}
+                        .email-message {{
+                            font-size: 16px;
+                            line-height: 1.5;
+                        }}
+                        .otp-code {{
+                            font-weight: bold;
+                            font-size: 24px;
+                            color: #008374;
+                            margin: 10px 0;
+                        }}
+                        .email-signoff {{
+                            margin-top: 20px;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class="email-container">
+                        <div class="email-title">Verifikasi Kode OTP</div>
+                        <div class="email-greeting">Halo,</div>
+                        <div class="email-message">
+                            Terima kasih telah mengajukan permintaan informasi untuk properti <strong>{property.title}</strong>.
+                            Kode OTP Anda untuk verifikasi adalah:
+                        </div>
+                        <div class="otp-code">{otp}</div>
+                        <div class="email-message">
+                            Harap masukkan kode ini untuk melanjutkan proses. Jika Anda tidak merasa melakukan permintaan ini, silakan abaikan email ini.
+                        </div>
+                        <div class="email-signoff">Salam,<br>Tim Properti Kami</div>
+                    </div>
+                </body>
+            </html>
+            """
+
+            send_mail(
+                email_subject,
+                '',
+                'Financial Broker <financialbrokerid@gmail.com>',
+                [inquiry.email],  # Send to the user's email
+                fail_silently=False,
+                html_message=email_body  # Use this for HTML content
+            )
+
+            # Redirect to the OTP verification page
+            return redirect('verify_otp_property')
+
+    else:
+        form = PropertyInquiryForm()
+
+    return render(request, 'property_inquiry.html', {'form': form, 'property': property})
+
+def verify_otp_property(request):
+    if request.method == 'POST':
+        entered_otp = request.POST.get('otp')
+        generated_otp = request.session.get('otp')
+        inquiry_id = request.session.get('inquiry_id')
+
+        if entered_otp == generated_otp:
+            # OTP is correct, mark the inquiry as verified
+            inquiry = PropertyInquiry.objects.get(id=inquiry_id)
+            inquiry.is_verified = True  # Assuming you have this field in your model
+            inquiry.save()
+
+            # Prepare the email content for confirmation
+            email_subject = 'Permintaan Informasi Properti Baru'
+            email_body = f"""
+            <html>
+            <head>
+                <style>
+                    .email-body {{
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        padding: 20px;
+                    }}
+                    .email-container {{
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 5px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }}
+                    .email-title {{
+                        color: #008374;
+                    }}
+                </style>
+            </head>
+            <body class="email-body">
+                <div class="email-container">
+                    <h2 class="email-title">Permintaan Informasi Properti Baru</h2>
+                    <p style="color: #000000;"><strong>Nama:</strong> {inquiry.name}</p>
+                    <p style="color: #000000;"><strong>Email:</strong> {inquiry.email}</p>
+                    <p style="color: #000000;"><strong>Nomor Telepon:</strong> {inquiry.phone_number}</p>
+                </div>
+            </body>
+            </html>
+            """
+
+            send_mail(
+                email_subject,
+                '',
+                'Financial Broker <financialbrokerid@gmail.com>',
+                # ['emailcumanbuatgame@gmail.com'],
+                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
+                fail_silently=False,
+                html_message=email_body  # Use this for HTML content
+            )
+
+            return redirect('thank_you')  # Redirect to a property-specific thank you page
+        else:
+            # Handle invalid OTP
+            error_message = "OTP yang Anda masukkan tidak valid."
+            return render(request, 'verify_otp_property.html', {'error_message': error_message})
+
+    return render(request, 'verify_otp_property.html')
+
+def property_detail(request, slug):
+    property = get_object_or_404(Property, slug=slug)
+    return render(request, 'property_detail.html', {'property': property})
+
+def custom_admin(request):
+    properties = Property.objects.all()
+    return render(request, 'admins/custom_admin.html', {'properties': properties})
+
+ADMIN_USERNAME = "fbadmin"
+ADMIN_PASSWORD = "11223344"
+
+def admin_verification(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Check if the entered username and password match the stored credentials
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            return redirect('custom_admin')  # Redirect to the custom admin page
+        else:
+            messages.error(request, 'Invalid username or password')
+            return redirect('admin_verification')  # Stay on the verification page if credentials are wrong
+
+    return render(request, 'admin_verification.html')
+
+def delete_property(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+
+    if request.method == 'POST':
+        property.delete()
+        return redirect('custom_admin')  # Redirect back to the admin page
+
+def add_property(request):
+    if request.method == 'POST':
+        form = PropertyForm(request.POST, request.FILES)  # Pass request.FILES for image uploads
+        if form.is_valid():
+            form.save()  # This will save the image to the `image` field
+            return redirect('property_list')
+    else:
+        form = PropertyForm()
+
+    return render(request, 'add_property.html', {'form': form})
+
+def ads_inquiry(request):
+    # Get the property object
+    # property = get_object_or_404(Property, id=property_id)
+
+    if request.method == 'POST':
+        form = AdsForm(request.POST)
+        if form.is_valid():
+            # Save the inquiry
+            inquiry = form.save()
+
+            # Generate OTP
+            otp = str(random.randint(100000, 999999))  # Generate a 6-digit OTP
+            request.session['otp'] = otp
+            request.session['inquiry_id'] = inquiry.id
+
+            # Prepare the OTP email content
+            email_subject = 'Verifikasi OTP untuk Permintaan Pengiklanan Properti'
+            email_body = f"""
+            <html>
+                <head>
+                    <style>
+                        body {{
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            padding: 20px;
+                            color: #333;
+                        }}
+                        .email-container {{
+                            background-color: #ffffff;
+                            padding: 20px;
+                            border-radius: 5px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }}
+                        .email-title {{
+                            color: #008374;
+                            font-size: 28px;
+                            margin-bottom: 10px;
+                        }}
+                        .email-greeting {{
+                            font-size: 18px;
+                        }}
+                        .email-message {{
+                            font-size: 16px;
+                            line-height: 1.5;
+                        }}
+                        .otp-code {{
+                            font-weight: bold;
+                            font-size: 24px;
+                            color: #008374;
+                            margin: 10px 0;
+                        }}
+                        .email-signoff {{
+                            margin-top: 20px;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class="email-container">
+                        <div class="email-title">Verifikasi Kode OTP</div>
+                        <div class="email-greeting">Halo,</div>
+                        <div class="email-message">
+                            Terima kasih telah mengajukan permohonan.
+                            Kode OTP Anda untuk verifikasi adalah:
+                        </div>
+                        <div class="otp-code">{otp}</div>
+                        <div class="email-message">
+                            Harap masukkan kode ini untuk melanjutkan proses. Jika Anda tidak merasa melakukan permintaan ini, silakan abaikan email ini.
+                        </div>
+                        <div class="email-signoff">Salam,<br>Tim Financial Broker</div>
+                    </div>
+                </body>
+            </html>
+            """
+
+            send_mail(
+                email_subject,
+                '',
+                'Financial Broker <financialbrokerid@gmail.com>',
+                [inquiry.email],  # Send to the user's email
+                fail_silently=False,
+                html_message=email_body  # Use this for HTML content
+            )
+
+            # Redirect to the OTP verification page
+            return redirect('verify_otp_ads')
+
+    else:
+        form = AdsForm()
+
+    return render(request, 'ads_inquiry.html', {'form': form})
+
+def verify_otp_ads(request):
+    if request.method == 'POST':
+        entered_otp = request.POST.get('otp')
+        generated_otp = request.session.get('otp')
+        inquiry_id = request.session.get('inquiry_id')
+
+        if entered_otp == generated_otp:
+            # OTP is correct, mark the inquiry as verified
+            inquiry = AdsInquiry.objects.get(id=inquiry_id)
+            inquiry.is_verified = True  # Assuming you have this field in your model
+            inquiry.save()
+
+            # Prepare the email content for confirmation
+            email_subject = 'Permintaan Pengiklanan Properti Baru'
+            email_body = f"""
+            <html>
+            <head>
+                <style>
+                    .email-body {{
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        padding: 20px;
+                    }}
+                    .email-container {{
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 5px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }}
+                    .email-title {{
+                        color: #008374;
+                    }}
+                </style>
+            </head>
+            <body class="email-body">
+                <div class="email-container">
+                    <h2 class="email-title">Permintaan Informasi Properti Baru</h2>
+                    <p style="color: #000000;"><strong>Nama:</strong> {inquiry.name}</p>
+                    <p style="color: #000000;"><strong>Email:</strong> {inquiry.email}</p>
+                    <p style="color: #000000;"><strong>Nomor Telepon:</strong> {inquiry.phone_number}</p>
+                </div>
+            </body>
+            </html>
+            """
+
+            send_mail(
+                email_subject,
+                '',
+                'Financial Broker <financialbrokerid@gmail.com>',
+                # ['emailcumanbuatgame@gmail.com'],
+                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
+                fail_silently=False,
+                html_message=email_body  # Use this for HTML content
+            )
+
+            return redirect('thank_you')  # Redirect to a property-specific thank you page
+        else:
+            # Handle invalid OTP
+            error_message = "OTP yang Anda masukkan tidak valid."
+            return render(request, 'verify_otp_ads.html', {'error_message': error_message})
+
+    return render(request, 'verify_otp_ads.html')
 
 def why_us(request):
     return render(request, 'why_us.html')

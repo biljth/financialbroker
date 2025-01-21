@@ -40,6 +40,8 @@
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
   <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet"> -->
 </head>
 
 <body class="index-page">
@@ -54,7 +56,7 @@
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="{% url 'home' %}" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
-<!--           <img src="{% static 'assets/img/LM logo2.png' %}" alt="" > -->
+          <img src="{% static 'assets/img/LM logo2.png' %}" alt="" >
           <h1 class="sitename">Financial Broker</h1>
           <span>.</span>
         </a>
@@ -140,6 +142,7 @@
             <li><a href="{% url 'why_us' %}">Mengapa Financial Broker</a></li>
             <li><a href="{% url 'terms_condition' %}">Syarat dan Ketentuan</a></li>
             <li><a href="{% url 'privacy_policy' %}">Kebijakan Privasi</a></li>
+            <li><a href="{% url 'admin_verification' %}">Admin</a></li>
           </ul>
         </div>
 

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Iklankan Properti Anda - Formulir Iklan Properti | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Ingin mengiklankan properti Anda? Ajukan melalui formulir online FINANCIAL BROKER dan jangkau calon pembeli dengan mudah.
+{% endblock %}
+
+{% block meta_keywords %}
+iklankan properti, formulir iklan, FINANCIAL BROKER, jangkau calon pembeli, iklan properti online
+{% endblock %}
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="POST">
+        {% csrf_token %}
+
+        <p>Lengkapi Informasi Berikut:</p>
+
+        <div class="item">
+            <label for="name">Nama Lengkap</label>
+            {{ form.name }}
+            {{ form.name.help_text }}
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="email">Email</label>
+            {{ form.email }}
+            {{ form.email.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="phone_number">Nomor Telepon</label>
+            {{ form.phone_number }}
+            {{ form.phone_number.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label>
+                <input type="checkbox" name="terms" required>
+                Saya setuju dengan&nbsp; 
+                <a href="{% url 'perjanjian' %}" target="_blank">perjanjian dan ketentuan.</a>
+            </label>
+        </div>
+
+        <div class="btn-block" style="margin-top: 20px;">
+            <button type="submit">Ajukan Permohonan</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneNumberInput = document.querySelector('input[name="phone_number"]');
+
+        phoneNumberInput.addEventListener('input', function(e) {
+            // Remove non-numeric characters
+            let value = this.value.replace(/[^\d]/g, '');
+            // Format with spaces every four digits
+            this.value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            // Store the unformatted value
+            this.setAttribute('data-unformatted-value', value);
+        });
+    });
+</script>
+{% endblock %}

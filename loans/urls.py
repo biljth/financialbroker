@@ -1,10 +1,13 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('loan_inquiry/<str:loan_type>/', views.loan_inquiry, name='loan_inquiry'),
     path('terms-condition/', views.terms_condition, name='terms_condition'),
+    path('perjanjian-ketentuan/', views.perjanjian, name='perjanjian'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('thank_you/', views.thank_you, name='thank_you'),
     path('history/', views.history, name='history'),
@@ -37,4 +40,15 @@ urlpatterns = [
     path('invoice-financing/', views.invoice_financing, name='invoice_financing'),
     path('bridging-offering-letter/', views.bridging_offering_letter, name='bridging_offering_letter'),
     path('sitemap.xml', views.sitemap, name='sitemap'),
-]
+    path('property_list', views.property_list, name='property_list'),
+    path('property/<slug:slug>/', views.property_detail, name='property_detail'),
+    path('add-property/', views.add_property, name='add_property'),
+    path('admins/', views.custom_admin, name='custom_admin'),
+    path('verify-admin/', views.admin_verification, name='admin_verification'),
+    path('admins/property/delete/<int:pk>/admins/custom_admin', views.delete_property, name='delete_property'),
+    path('property/<slug:slug>/', views.property_detail, name='property_detail'),
+    path('property_inquiry/<int:property_id>', views.property_inquiry, name='property_inquiry'),
+    path('verify-otp-property/', views.verify_otp_property, name='verify_otp_property'),
+    path('ads-inquiry/', views.ads_inquiry, name='ads_inquiry'),
+    path('verify-otp-ads/', views.verify_otp_ads, name='verify_otp_ads'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

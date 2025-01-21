@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Daftar Properti - Temukan Properti Terbaik | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Telusuri daftar properti terbaik yang tersedia di FINANCIAL BROKER. Pilih properti yang sesuai dengan kebutuhan dan lokasi Anda.
+{% endblock %}
+
+{% block meta_keywords %}
+daftar properti, properti terbaik, FINANCIAL BROKER, properti sesuai kebutuhan, properti pilihan
+{% endblock %}
+
+{% block content %}
+<!-- <div class="container-xxl py-5">
+    <div class="tab-content">
+        <div class="container">
+            <div class="row g-4">
+                <div class="property-list d-flex flex-wrap justify-content-center mt-4">
+        {% for property in properties %}
+            {% if property.property_type == "sell" %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="property-item rounded overflow-hidden shadow">
+                    <div class="position-relative overflow-hidden">
+                        <a href="{% url 'property_detail' property.slug %}">
+                            {% if property.image %}
+                                <img class="img-fluid" src="{{ property.image.url }}" alt="{{ property.title }}">
+                            {% endif %}
+
+                        </a>
+                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #008374 !important;">
+                            {{ property.property_type|title }}
+                        </div>
+                        <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                            {{ property.title }}
+                        </div>
+                    </div>
+                    <div class="p-4 pb-0">
+                        <h5 class="text-primary mb-3">Rp{{ property.price|floatformat:2 }}</h5>
+                        <a class="d-block h5 mb-2" href="{% url 'property_detail' property.slug %}">
+                            {{ property.title }}
+                        </a>
+                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ property.location }}</p>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="flex-fill text-center border-end py-2">
+                            <i class="fa fa-ruler-combined text-primary me-2"></i>{{ property.area }} m²
+                        </small>
+                        <small class="flex-fill text-center border-end py-2">
+                            <i class="fa fa-bed text-primary me-2"></i>{{ property.bedrooms }} Bed
+                        </small>
+                        <small class="flex-fill text-center py-2">
+                            <i class="fa fa-bath text-primary me-2"></i>{{ property.bathrooms }} Bath
+                        </small>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% empty %}
+            <p class="text-center">No properties found</p>
+        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Property List Start -->
+<div class="container-xxl py-5" style="margin-top: 80px;">
+    <div class="container">
+        <div class="row g-0 gx-5 align-items-end">
+
+            <!-- Property List Title -->
+            <div class="col-lg-6">
+                <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                    <h1 class="mb-3">List Properti</h1>
+                    <p>Ingin mengiklankan properti Anda? <a href="{% url 'ads_inquiry' %}">Klik di sini</a></p>
+                    {% include 'search_form.html' %}
+                </div>
+            </div>
+            
+            <!-- Sell / Rent Title -->
+            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Dijual</a>
+                    </li>
+                    <li class="nav-item me-0">
+                        <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Disewa</a>
+                    </li>
+                </ul>
+            </div>
+
+        <div class="tab-content">
+
+            <!-- Property Boxes Sell Section -->
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-5">
+                    <div class="property-list d-flex flex-wrap justify-content-center mt-4">
+                        {% for property in properties %}
+                            {% if property.property_type == "sell" %}
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="property-item rounded overflow-hidden shadow">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href="{% url 'property_detail' property.slug %}">
+                                            {% if property.image %}
+                                                <img class="img-fluid square-image" src="{{ property.image.url }}" alt="{{ property.title }}">
+                                            {% endif %}
+                                        </a>
+                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #008374 !important;">
+                                            {{ property.property_type|title }}
+                                        </div>
+                                        <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            {{ property.title }}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">Rp {{ property.price|format_price }}</h5>
+                                        <a class="d-block h5 mb-2" href="{% url 'property_detail' property.slug %}">
+                                            {{ property.title }}
+                                        </a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ property.location }}</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2">
+                                            <i class="fa fa-ruler-combined text-primary me-2"></i>{{ property.area }} m²
+                                        </small>
+                                        <small class="flex-fill text-center border-end py-2">
+                                            <i class="fa fa-bed text-primary me-2"></i>{{ property.bedrooms }} Bed
+                                        </small>
+                                        <small class="flex-fill text-center py-2">
+                                            <i class="fa fa-bath text-primary me-2"></i>{{ property.bathrooms }} K. Mandi
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% empty %}
+                            <p class="text-center">No properties found</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Boxes For Rent Section -->
+            <div id="tab-3" class="tab-pane fade show p-0">
+                <div class="row g-5">
+                    <div class="property-list d-flex flex-wrap justify-content-center mt-4">
+                        {% for property in properties %}
+                            {% if property.property_type == "rent" %}
+                                <div class="col-lg-3 col-md-4 mb-4">
+                                <div class="property-item rounded overflow-hidden shadow custom-spacing">
+                                    <div class="position-relative overflow-hidden">
+                                        <a href="{% url 'property_detail' property.slug %}">
+                                            {% if property.image %}
+                                                <img class="img-fluid square-image" src="{{ property.image.url }}" alt="{{ property.title }}">
+                                            {% endif %}
+
+                                        </a>
+                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #008374 !important; ">
+                                            {{ property.property_type|title }}
+                                        </div>
+                                        <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                            {{ property.title }}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 pb-0">
+                                        <h5 class="text-primary mb-3">Rp {{ property.price|format_price }}</h5>
+                                        <a class="d-block h5 mb-2" href="{% url 'property_detail' property.slug %}">
+                                            {{ property.title }}
+                                        </a>
+                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ property.location }}</p>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2">
+                                            <i class="fa fa-ruler-combined text-primary me-2"></i>{{ property.area }} m²
+                                        </small>
+                                        <small class="flex-fill text-center border-end py-2">
+                                            <i class="fa fa-bed text-primary me-2"></i>{{ property.bedrooms }} Bed
+                                        </small>
+                                        <small class="flex-fill text-center py-2">
+                                            <i class="fa fa-bath text-primary me-2"></i>{{ property.bathrooms }} K. Mandi
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% empty %}
+                            <p class="text-center">No properties found</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Property List End -->
+
+{% endblock %}

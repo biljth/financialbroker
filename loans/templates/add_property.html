@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Tambahkan Properti Baru - Kelola Properti Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Tambahkan properti baru Anda dengan mudah melalui halaman khusus FINANCIAL BROKER. Kelola properti Anda secara efisien.
+{% endblock %}
+
+{% block meta_keywords %}
+tambahkan properti baru, kelola properti, FINANCIAL BROKER, properti baru, manajemen properti
+{% endblock %}
+
+
+{% block content %}
+<div class="testbox" style="margin-top: 70px; margin-bottom: 50px;">
+    <div class="card shadow p-4">
+        <form method="post" enctype="multipart/form-data" action="{% url 'add_property' %}">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="title" class="form-label">Nama Properti</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Masukkan nama properti" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Enter property price" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter property location" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Deskripsi" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="property_type" class="form-label">Property Type</label>
+                <select class="form-select" id="property_type" name="property_type" required>
+                    <option value="" disabled selected>Select property type</option>
+                    <option value="rent">For Rent</option>
+                    <option value="sell">For Sale</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="area" class="form-label">Luas (m²)</label>
+                <input type="number" class="form-control" id="area" name="area" placeholder="Enter property area in Sqft" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="bedrooms" class="form-label">Number of Bedrooms</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="bathrooms" class="form-label">Number of Bathrooms</label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Property Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'property_list' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Add Property</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

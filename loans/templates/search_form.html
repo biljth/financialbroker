@@ -1,0 +1,61 @@
+<div class="container my-4">
+    <!-- Filter Button -->
+    <button id="filter-btn" class="btn btn-primary mb-3" style="margin-left: -12px;">Filter</button>
+
+    <!-- Filter Form (Initially Hidden) -->
+        <div id="filter-form" style="display: none;">
+         <form method="GET" action="" class="mb-5">
+                <div class="row g-3">
+                    <!-- Search Keyword -->
+                    <div class="col-md-4">
+                        <input type="text" name="query" class="form-control" placeholder="Nama Preperti" value="{{ form.query.value|default:''  }}">
+                    </div>
+
+                    <!-- Location -->
+                    <div class="col-md-4">
+                        <input type="text" name="location" class="form-control" placeholder="Lokasi" value="{{ form.location.value|default:''  }}">
+                    </div>
+
+                    <!-- Min Area -->
+                    <div class="col-md-2">
+                        <input type="number" name="min_area" class="form-control" placeholder="Min Luas (m²)" value="{{ form.min_area.value }}">
+                    </div>
+
+                    <!-- Max Area -->
+                    <div class="col-md-2">
+                        <input type="number" name="max_area" class="form-control" placeholder="Max Luas (m²)" value="{{ form.max_area.value }}">
+                    </div>
+
+                    <!-- Min Price -->
+                    <div class="col-md-2">
+                        <input type="number" step="0.01" name="min_price" class="form-control" placeholder="Min Harga" value="{{ form.min_price.value }}">
+                    </div>
+
+                    <!-- Max Price -->
+                    <div class="col-md-2">
+                        <input type="number" step="0.01" name="max_price" class="form-control" placeholder="Max Harga" value="{{ form.max_price.value }}">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success" style="background-color: #008374 !important;">Apply Filters</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+
+<script>
+    // Get the button and form elements
+    const filterBtn = document.getElementById('filter-btn');
+    const filterForm = document.getElementById('filter-form');
+
+    // Add a click event listener to toggle the form's visibility
+    filterBtn.addEventListener('click', function () {
+        if (filterForm.style.display === 'none') {
+            filterForm.style.display = 'block'; // Show the form
+        } else {
+            filterForm.style.display = 'none'; // Hide the form
+        }
+    });
+</script>

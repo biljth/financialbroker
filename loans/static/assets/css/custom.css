@@ -341,3 +341,30 @@ input[type="radio"] {
     border-radius: 8px;
     margin-left: -30px;
   }
+
+  .text-primary {
+    color: #008374 !important;
+  }
+
+  .square-image {
+    width: 100%; /* Ensures it fits its container width */
+    aspect-ratio: 1 / 1; /* Maintains a perfect square */
+    object-fit: cover; /* Ensures the image fills the square without distortion */
+    border-radius: 8px; /* Optional: Adds rounded corners for a polished look */
+  }
+
+  .custom-spacing {
+    margin-bottom: 20px !important; /* Space between property items vertically */
+    margin-right: 20px !important;  /* Space between property items horizontally */
+}
+
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Provides gap between flex items */
+}
+
+.property-item {
+    margin-bottom: 20px; /* Ensures vertical spacing */
+    margin-right: 20px;  /* Ensures horizontal spacing */
+}

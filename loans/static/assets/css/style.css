@@ -1,0 +1,38 @@
+/********** Template CSS **********/
+:root {
+    --primary: #008374;
+    --secondary: #FF6922;
+    --light: #EFFDF5;
+    --dark: #0E2E50;
+}
+
+.btn-outline-primary {
+    color: #008374; /* Set text color to green */
+    border-color: #008374; /* Set border color to green */
+    border-color: #008374; /* Border matching the primary color */
+}
+
+.btn-outline-primary.active, 
+.btn-outline-primary:hover, 
+.btn-outline-primary:focus {
+    color: #fff; /* Set text color to white */
+    background-color: #008374; /* Set background color to green */
+    border-color: #008374; /* Keep the border green */
+}
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #008374;
+    --bs-btn-border-color: #008374;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #018c7c;
+    --bs-btn-hover-border-color: #018c7c;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #018c7c;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #018c7c;
+    --bs-btn-disabled-border-color: #008374;
+}

@@ -1,0 +1,54 @@
+<!-- templates/admin/custom_admin.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Halaman Admin Khusus | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Kelola konten dan data properti Anda melalui halaman admin khusus FINANCIAL BROKER.
+{% endblock %}
+
+{% block meta_keywords %}
+halaman admin, admin khusus, FINANCIAL BROKER, kelola properti, admin properti
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Property Management</h2>
+        
+        <div class="d-flex justify-content-between mb-4">
+            <a href="{% url 'add_property' %}" class="btn btn-primary">Add New Property</a>
+        </div>
+        
+        <div class="row">
+            {% for property in properties %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        {% if property.image %}
+                            <img src="{{ property.image.url }}" class="card-img-top" alt="{{ property.title }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ property.title }}</h5>
+                            <p class="card-text">Price: ${{ property.price }}</p>
+                            <p class="card-text">Location: {{ property.location }}</p>
+                            <p class="card-text">Area: {{ property.area }} Sqft</p>
+                            <p class="card-text">Bedrooms: {{ property.bedrooms }} | Bathrooms: {{ property.bathrooms }}</p>
+                            
+                            <!-- Delete Button -->
+                            <div style="margin-top: 30px;">
+                                    <form method="POST" action="{% url 'delete_property' property.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                    </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No properties available to manage.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+Verifikasi Admin - Akses Khusus Admin | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Masukkan username dan password untuk mengakses halaman admin khusus FINANCIAL BROKER. Halaman ini hanya untuk admin terverifikasi.
+{% endblock %}
+
+{% block meta_keywords %}
+verifikasi admin, akses admin, FINANCIAL BROKER, halaman admin khusus, admin terverifikasi
+{% endblock %}
+
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="POST" >
+        {% csrf_token %}
+        <h1><strong>Verifikasi</strong></h1>
+
+        <div class="item">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        
+        <div class="item" style="margin-top: 15px;">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" id="password" name="password" required>
+        </div>
+
+        <div class="btn-block" style="margin-top: 20px;">
+            <button type="submit">Masuk</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
