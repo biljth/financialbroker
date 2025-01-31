@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+.from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render
@@ -523,7 +523,7 @@ def verify_otp_property(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
+                ['emailcumanbuatgame@gmail.com', 'eva.yahya48@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com', 'lidwina.yahya@gmail.com'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
