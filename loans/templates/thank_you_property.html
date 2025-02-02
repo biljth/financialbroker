@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Terima Kasih - Pengajuan Anda Telah Diterima | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Terima kasih telah mengajukan pinjaman melalui FINANCIAL BROKER. Kami akan memproses pengajuan Anda dan menghubungi Anda segera.
+{% endblock %}
+
+{% block meta_keywords %}
+terima kasih, pengajuan diterima, FINANCIAL BROKER, konfirmasi pengajuan, proses pengajuan
+{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="margin-top: 130px; margin-bottom: 50px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">  <!-- Made the column smaller -->
+            <div class="card text-center shadow-lg">
+                <div class="card-header" style="background-color: #008374; color: white;">
+                    <h3 style="font-weight: bold; margin: 10px; color: white;">Terima Kasih!</h3>  <!-- Set text color to white -->
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Permohonan Anda telah berhasil diajukan.</h5>
+                    <p class="card-text">Team Accuratz Property akan segera menghubungi anda untuk kelengkapan data foto properti dan deskripsi.</p>
+                    <a href="{% url 'home' %}" class="btn btn-light mt-3">Kembali ke Beranda</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>Jika Anda memiliki pertanyaan, silakan hubungi kami.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+{% endblock %}

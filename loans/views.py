@@ -182,7 +182,7 @@ def verify_otp_loan(request):
                 email_subject,
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
-                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the user's email
+                ['billyjonathanjahja@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the user's email
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
@@ -197,6 +197,8 @@ def verify_otp_loan(request):
 
 def thank_you(request):
     return render(request, 'thank_you.html')  
+def thank_you_property(request):
+    return render(request, 'thank_you_property.html')  
 
 def history(request):
     if request.method == 'POST':
@@ -285,7 +287,6 @@ def history(request):
                 send_mail(
                     'Kode OTP Anda',
                     '',  # Leave this empty because we're sending HTML
-                    'billyjonathanjahja@gmail.com',
                     [email],
                     fail_silently=False,
                     html_message=otp_email_body  # Use this for HTML content
@@ -523,7 +524,7 @@ def verify_otp_property(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['emailcumanbuatgame@gmail.com', 'eva.yahya48@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com', 'lidwina.yahya@gmail.com'],  # Send to the appropriate email addresses
+                ['billyjonathanjahja@gmail.com', 'eva.yahya48@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com', 'lidwina.yahya@gmail.com'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
@@ -706,7 +707,7 @@ def verify_otp_ads(request):
             </head>
             <body class="email-body">
                 <div class="email-container">
-                    <h2 class="email-title">Permintaan Informasi Properti Baru</h2>
+                    <h2 class="email-title">Permohonan Iklan</h2>
                     <p style="color: #000000;"><strong>Nama:</strong> {inquiry.name}</p>
                     <p style="color: #000000;"><strong>Email:</strong> {inquiry.email}</p>
                     <p style="color: #000000;"><strong>Nomor Telepon:</strong> {inquiry.phone_number}</p>
@@ -720,7 +721,7 @@ def verify_otp_ads(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['emailcumanbuatgame@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
+                ['billyjonathanjahja@gmail.com', 'eva.yahya48@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com', 'lidwina.yahya@gmail.com'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
