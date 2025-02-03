@@ -529,7 +529,7 @@ def verify_otp_property(request):
                 html_message=email_body  # Use this for HTML content
             )
 
-            return redirect('thank_you')  # Redirect to a property-specific thank you page
+            return redirect('thank_you_property')  # Redirect to a property-specific thank you page
         else:
             # Handle invalid OTP
             error_message = "OTP yang Anda masukkan tidak valid."
@@ -726,7 +726,7 @@ def verify_otp_ads(request):
                 html_message=email_body  # Use this for HTML content
             )
 
-            return redirect('thank_you')  # Redirect to a property-specific thank you page
+            return redirect('thank_you_property')  # Redirect to a property-specific thank you page
         else:
             # Handle invalid OTP
             error_message = "OTP yang Anda masukkan tidak valid."

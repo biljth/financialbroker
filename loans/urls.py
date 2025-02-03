@@ -10,6 +10,7 @@ urlpatterns = [
     path('perjanjian-ketentuan/', views.perjanjian, name='perjanjian'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('thank_you/', views.thank_you, name='thank_you'),
+    path('thank_you_property/', views.thank_you_property, name='thank_you_property'),
     path('history/', views.history, name='history'),
     path('verify-otp/', views.verify_otp, name='verify_otp'),
     path('verify-otp-loan/', views.verify_otp_loan, name='verify_otp_loan'),
