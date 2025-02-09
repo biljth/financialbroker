@@ -26,54 +26,65 @@ tambahkan properti baru, kelola properti, FINANCIAL BROKER, properti baru, manaj
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" name="price" placeholder="Enter property price" required>
+                <label for="title" class="form-label">Tipe Properti</label>
+                <input type="text" class="form-control" id="title" name="property_category" placeholder="Rumah/Apartemen/Ruko dan lain-lain" required>
             </div>
 
             <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location" placeholder="Enter property location" required>
+                <label for="price" class="form-label">Harga</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Masukkan harga properti" required>
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
+                <label for="location" class="form-label">Lokasi</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Masukkan lokasi properti" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Deskripsi</label>
                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Deskripsi" required></textarea>
             </div>
 
             <div class="mb-3">
-                <label for="property_type" class="form-label">Property Type</label>
+                <label for="property_type" class="form-label">Jenis Properti</label>
                 <select class="form-select" id="property_type" name="property_type" required>
-                    <option value="" disabled selected>Select property type</option>
+                    <option value="" disabled selected>Pilih jenis properti</option>
                     <option value="rent">For Rent</option>
                     <option value="sell">For Sale</option>
                 </select>
             </div>
 
             <div class="mb-3">
-                <label for="area" class="form-label">Luas (m²)</label>
-                <input type="number" class="form-control" id="area" name="area" placeholder="Enter property area in Sqft" required>
+                <label for="area" class="form-label">Luas Tanah (m²)</label>
+                <input type="number" class="form-control" id="area_surface" name="area_surface" placeholder="Masukkan luas tanah dalam m²" required>
             </div>
 
             <div class="mb-3">
-                <label for="bedrooms" class="form-label">Number of Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" required>
+                <label for="area" class="form-label">Luas Bangunan (m²)</label>
+                <input type="number" class="form-control" id="area_building" name="area_building" placeholder="Masukkan luas bangunan dalam m²" required>
             </div>
 
             <div class="mb-3">
-                <label for="bathrooms" class="form-label">Number of Bathrooms</label>
-                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" required>
+                <label for="bedrooms" class="form-label">Jumlah Kamar Tidur</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Masukkan jumlah kamar tidur" required>
             </div>
 
             <div class="mb-3">
-                <label for="image" class="form-label">Upload Property Image</label>
+                <label for="bathrooms" class="form-label">Jumlah Kamar Mandi</label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Masukkan jumlah kamar mandi" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Foto Properti</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
             </div>
 
             <div class="d-flex justify-content-between mt-4">
-                <a href="{% url 'property_list' %}" class="btn btn-secondary">Cancel</a>
-                <button type="submit" class="btn btn-primary">Add Property</button>
+                <a href="{% url 'property_list' %}" class="btn btn-secondary">Batal</a>
+                <button type="submit" class="btn btn-primary">Tambah Properti</button>
             </div>
         </form>
     </div>
 </div>
+
 {% endblock %}

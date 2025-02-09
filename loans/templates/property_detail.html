@@ -32,14 +32,17 @@ detail properti, properti impian, FINANCIAL BROKER, informasi properti, properti
         <div class="col-lg-6">
             <h1 class="mb-3">{{ property.title }}</h1>
             <h3 class="text-primary mb-4">Rp {{ property.price|format_price }}</h3>
-            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ property.location }}</p>
-            <p><i class="fa fa-ruler-combined text-primary me-2"></i> {{ property.area }} m²</p>
-            <p><i class="fa fa-bed text-primary me-2"></i> {{ property.bedrooms }} Kamar Tidur</p>
-            <p><i class="fa fa-bath text-primary me-2"></i> {{ property.bathrooms }} Kamar Mandi</p>
-            <p><i class="fa fa-building text-primary me-2"></i> {{ property.property_type|title }}</p>
+
+            <p><i class="fa fa-home text-primary me-2"></i> Tipe Properti: {{ property.property_category }}</p>
+            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> Lokasi: {{ property.location }}</p>
+            <p><i class="fa fa-ruler-combined text-primary me-2"></i> Luas Tanah: {{ property.area_surface }} m²</p>
+            <p><i class="fa fa-ruler text-primary me-2"></i> Luas Bangunan: {{ property.area_building }} m²</p>
+            <p><i class="fa fa-bed text-primary me-2"></i> Jumlah Kamar Tidur: {{ property.bedrooms }}</p>
+            <p><i class="fa fa-bath text-primary me-2"></i> Jumlah Kamar Mandi: {{ property.bathrooms }}</p>
+            <p><i class="fa fa-building text-primary me-2"></i> Jenis Properti: {{ property.property_type|title }}</p>
 
             <!-- Property Description -->
-            <h5 class="mt-4">Description</h5>
+            <h5 class="mt-4">Deskripsi</h5>
             <p>{{ property.description }}</p>
 
             <!-- Action Buttons -->
@@ -56,6 +59,7 @@ detail properti, properti impian, FINANCIAL BROKER, informasi properti, properti
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 

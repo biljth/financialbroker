@@ -27,7 +27,7 @@ class PropertySearchForm(forms.Form):
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
-        fields = ['title', 'description', 'price', 'location', 'property_type', 'area', 'bedrooms', 'bathrooms', 'image']
+        fields = ['title', 'description', 'price', 'location', 'property_type', 'property_category', 'area_surface', 'area_building', 'bedrooms', 'bathrooms', 'image']
         widgets = {
             'price': forms.TextInput(attrs={'class': 'price'})
         }

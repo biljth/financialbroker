@@ -30,7 +30,9 @@ class Property(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     location = models.CharField(max_length=255)
     property_type = models.CharField(max_length=10, choices=PROPERTY_TYPES)
-    area = models.IntegerField(null=True, blank=True)  # Optional
+    property_category = models.CharField(max_length=255)
+    area_surface = models.IntegerField(null=True, blank=True)  # Optional
+    area_building = models.IntegerField(null=True, blank=True)
     bedrooms = models.IntegerField(null=True, blank=True)  # Optional
     bathrooms = models.IntegerField(null=True, blank=True) 
     image = models.ImageField(upload_to='property_images/')
