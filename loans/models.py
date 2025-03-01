@@ -35,7 +35,7 @@ class Property(models.Model):
     area_building = models.IntegerField(null=True, blank=True)
     bedrooms = models.IntegerField(null=True, blank=True)  # Optional
     bathrooms = models.IntegerField(null=True, blank=True) 
-    image = models.ImageField(upload_to='property_images/')
+    # image = models.ImageField(upload_to='property_images/')
     slug = models.SlugField(unique=True, blank=True)  # Add slug field
     
     def save(self, *args, **kwargs):
@@ -53,6 +53,13 @@ class PropertyInquiry(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+class PropertyImage(models.Model):
+    property = models.ForeignKey(Property, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='property_images/')
+
+    def __str__(self):
+        return f"Image for {self.property.title}"
     
 class AdsInquiry(models.Model):
     name = models.CharField(max_length=100)

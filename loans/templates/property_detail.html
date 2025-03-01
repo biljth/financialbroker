@@ -19,14 +19,39 @@ detail properti, properti impian, FINANCIAL BROKER, informasi properti, properti
 
 <div class="container py-5" style="margin-top: 80px;">
     <div class="row">
-        <!-- Property Image Section -->
+        <!-- Swiper Container -->
         <div class="col-lg-6">
-            {% if property.image %}
-                <img class="img-fluid rounded shadow square-image" src="{{ property.image.url }}" alt="{{ property.title }}">
+            {% if property.images.all %}
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        {% for image in property.images.all %}
+                            <div class="swiper-slide">
+                                <img class="d-block w-100 img-fluid rounded shadow" src="{{ image.image.url }}" alt="Property Image">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Swiper Controls -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             {% else %}
                 <img class="img-fluid rounded shadow" src="/static/images/default-property.jpg" alt="No Image Available">
             {% endif %}
         </div>
+
+        <!-- Swiper JS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
 
         <!-- Property Details Section -->
         <div class="col-lg-6">

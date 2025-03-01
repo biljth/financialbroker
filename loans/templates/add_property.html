@@ -75,10 +75,10 @@ tambahkan properti baru, kelola properti, FINANCIAL BROKER, properti baru, manaj
             </div>
 
             <div class="mb-3">
-                <label for="image" class="form-label">Upload Foto Properti</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                <label for="images">Upload Foto Properti</label>
+                <input type="file" name="images" accept="image/*" multiple>
             </div>
-
+            
             <div class="d-flex justify-content-between mt-4">
                 <a href="{% url 'property_list' %}" class="btn btn-secondary">Batal</a>
                 <button type="submit" class="btn btn-primary">Tambah Properti</button>

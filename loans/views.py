@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from .forms import LoanInquiryForm, HistoryForm, PropertySearchForm, PropertyForm, PropertyInquiryForm, AdsForm
-from .models import Property, LoanInquiry, PropertyInquiry, AdsInquiry
+from .models import Property, LoanInquiry, PropertyInquiry, AdsInquiry, PropertyImage
 import random
 
 
@@ -182,7 +182,7 @@ def verify_otp_loan(request):
                 email_subject,
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
-                ['billyjonathanjahja@gmail.com', 'hutauruk.lamhot@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com'],  # Send to the user's email
+                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com'],  # Send to the user's email
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
@@ -524,7 +524,7 @@ def verify_otp_property(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['billyjonathanjahja@gmail.com', 'eva.yahya48@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com', 'lidwina.yahya@gmail.com'],  # Send to the appropriate email addresses
+                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
@@ -571,10 +571,16 @@ def delete_property(request, pk):
 
 def add_property(request):
     if request.method == 'POST':
-        form = PropertyForm(request.POST, request.FILES)  # Pass request.FILES for image uploads
+        form = PropertyForm(request.POST)  # Don't pass request.FILES here
         if form.is_valid():
-            form.save()  # This will save the image to the `image` field
-            return redirect('property_list')
+            property_instance = form.save()  # Save property first
+
+            # Process multiple images
+            images = request.FILES.getlist('images')  # Get list of uploaded images
+            for image in images:
+                PropertyImage.objects.create(property=property_instance, image=image)  # Save each image
+
+            return redirect('property_list')  # Redirect after successful upload
     else:
         form = PropertyForm()
 
@@ -721,7 +727,7 @@ def verify_otp_ads(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['billyjonathanjahja@gmail.com', 'eva.yahya48@gmail.com', 'wisdom334@yahoo.co.id', 'danielfelixjahja@gmail.com', 'lidwina.yahya@gmail.com'],  # Send to the appropriate email addresses
+                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )

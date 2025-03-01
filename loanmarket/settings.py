@@ -90,11 +90,11 @@ DATABASES = {
     }
 }
 
-database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
-
-# database_url = "postgresql://postgres:YojsAIyFRWYDqcdBvWJRXuApHBmiFPhQ@monorail.proxy.rlwy.net:58377/railway"
+# database_url = os.environ.get("DATABASE_URL")
 # DATABASES["default"] = dj_database_url.parse(database_url)
+
+database_url = "postgresql://postgres:YojsAIyFRWYDqcdBvWJRXuApHBmiFPhQ@monorail.proxy.rlwy.net:58377/railway"
+DATABASES["default"] = dj_database_url.parse(database_url)
 
 # DATABASES = {
 #     'default': dj_database_url.config(
