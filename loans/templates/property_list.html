@@ -106,9 +106,8 @@ daftar properti, properti terbaik, FINANCIAL BROKER, properti sesuai kebutuhan, 
                                 <div class="property-item rounded overflow-hidden shadow">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{% url 'property_detail' property.slug %}">
-                                            {% if property.image %}
-                                                <img class="img-fluid square-image" src="{{ property.image.url }}" alt="{{ property.title }}">
-                                            {% endif %}
+                                            {% firstof property.images.first.image.url "/static/images/default-property.jpg" as first_image %}
+                                            <img class="img-fluid square-image" src="{{ first_image }}" alt="{{ property.title }}">
                                         </a>
                                         <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #008374 !important;">
                                             {{ property.property_type|title }}
