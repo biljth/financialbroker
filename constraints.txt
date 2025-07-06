@@ -1,0 +1,1 @@
+psycopg2==9999  # Fake high version to block it
