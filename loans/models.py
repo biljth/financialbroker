@@ -27,7 +27,7 @@ class Property(models.Model):
     
     title = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.DecimalField(max_digits=18, decimal_places=0)
+    price = models.DecimalField(max_digits=17, decimal_places=0)
     location = models.CharField(max_length=255)
     property_type = models.CharField(max_length=10, choices=PROPERTY_TYPES)
     property_category = models.CharField(max_length=255)
