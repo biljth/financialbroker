@@ -182,7 +182,7 @@ def verify_otp_loan(request):
                 email_subject,
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
-                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com'],  # Send to the user's email
+                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com', 'marketing@financialbroker.id'],  # Send to the user's email
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
@@ -524,7 +524,7 @@ def verify_otp_property(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
+                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com', 'marketing@financialbroker.id'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
@@ -727,7 +727,7 @@ def verify_otp_ads(request):
                 '',
                 'Financial Broker <financialbrokerid@gmail.com>',
                 # ['emailcumanbuatgame@gmail.com'],
-                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com'],  # Send to the appropriate email addresses
+                ['billyjonathanjahja@gmail.com', 'danielfelixjahja@gmail.com', 'marketing@financialbroker.id'],  # Send to the appropriate email addresses
                 fail_silently=False,
                 html_message=email_body  # Use this for HTML content
             )
