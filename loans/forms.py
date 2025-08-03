@@ -41,3 +41,22 @@ class AdsForm(forms.ModelForm):
     class Meta:
         model = AdsInquiry
         fields = ['name', 'phone_number', 'email']
+
+
+class KPRCalculatorForm(forms.Form):
+    harga_properti = forms.CharField(
+        label='Harga Properti',
+        widget=forms.TextInput(attrs={'class': 'loan-amount form-control'})
+    )
+    uang_muka = forms.CharField(
+        label='Uang Muka',
+        widget=forms.TextInput(attrs={'class': 'loan-amount form-control'})
+    )
+    bunga = forms.FloatField(
+        label='Suku Bunga',
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+    tenor = forms.IntegerField(
+        label='Tenor',
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )

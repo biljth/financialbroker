@@ -17,37 +17,44 @@ permintaan informasi properti, properti ideal, FINANCIAL BROKER, informasi prope
 
 
 {% block content %}
-<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
-    <form method="POST" action="{% url 'property_inquiry' property_id=property.id %}">
-        {% csrf_token %}
-        <h1><strong>{{ property.title }}</strong></h1>
+<div class="container" style="margin-top: 80px; margin-bottom: 50px; max-width: 600px;">
+    <div class="card shadow-lg rounded-4 p-4">
+        <h2 class="text-center mb-4">Kalkulator KPR</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
 
-        <input type="hidden" name="property_id" value="{{ property.id }}">
+            <div class="form-floating mb-3">
+                {{ form.harga_properti|add_class:"form-control loan-amount" }}
+                <label for="id_harga_properti">Harga Properti (Rp)</label>
+            </div>
 
-        <p>Lengkapi Informasi Berikut:</p>
+            <div class="form-floating mb-3">
+                {{ form.uang_muka|add_class:"form-control loan-amount" }}
+                <label for="id_uang_muka">Uang Muka (Rp)</label>
+            </div>
 
-        <div class="item">
-            <label for="name">Nama Lengkap</label>
-            {{ form.name }}
-            {{ form.name.help_text }}
+            <div class="form-floating mb-3">
+                {{ form.bunga|add_class:"form-control" }}
+                <label for="id_bunga">Suku Bunga per Tahun (%)</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                {{ form.tenor|add_class:"form-control" }}
+                <label for="id_tenor">Tenor (Tahun)</label>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="/" class="btn btn-outline-secondary rounded-pill">Batal</a>
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Hitung Cicilan</button>
+            </div>
+        </form>
+
+        {% if monthly_payment %}
+        <div class="alert alert-success text-center fw-semibold mt-4">
+            Cicilan per bulan: <strong>Rp {{ monthly_payment|intcomma }}</strong>
         </div>
-        
-        <div class="item" style="margin-top: 15px;">
-            <label for="email">Email</label>
-            {{ form.email }}
-            {{ form.email.help_text }}
-        </div>
-
-        <div class="item" style="margin-top: 15px;">
-            <label for="phone_number">Nomor Telepon</label>
-            {{ form.phone_number }}
-            {{ form.phone_number.help_text }}
-        </div>
-
-        <div class="btn-block" style="margin-top: 20px;">
-            <button type="submit">Ajukan Permohonan</button>
-        </div>
-    </form>
+        {% endif %}
+    </div>
 </div>
 
 <script>

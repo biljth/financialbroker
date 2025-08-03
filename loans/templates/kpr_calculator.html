@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+Kalkulator KPR - Hitung Cicilan Rumah Anda | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Gunakan kalkulator KPR FINANCIAL BROKER untuk menghitung cicilan bulanan Anda dengan mudah. Masukkan harga rumah, uang muka, suku bunga, dan tenor.
+{% endblock %}
+
+{% block meta_keywords %}
+kalkulator kpr, hitung cicilan, kredit rumah, KPR, cicilan bulanan, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="POST">
+        {% csrf_token %}
+
+        <h1><strong>Kalkulator KPR</strong></h1>
+        <p>Lengkapi Informasi Berikut:</p>
+
+        <div class="item">
+            <label for="harga_properti">Harga Properti (Rp)</label>
+            {{ form.harga_properti }}
+            {{ form.harga_properti.errors }}
+            {{ form.harga_properti.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="uang_muka">Uang Muka (Rp)</label>
+            {{ form.uang_muka }}
+            {{ form.uang_muka.errors }}
+            {{ form.uang_muka.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="bunga">Suku Bunga per Tahun (%)</label>
+            {{ form.bunga }}
+            {{ form.bunga.errors }}
+            {{ form.bunga.help_text }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="tenor">Tenor (tahun)</label>
+            {{ form.tenor }}
+            {{ form.tenor.errors }}
+            {{ form.tenor.help_text }}
+        </div>
+
+        <div class="btn-block" style="margin-top: 20px;">
+            <button type="submit">Hitung Cicilan</button>
+        </div>
+
+        {% if monthly_payment %}
+        <div class="item" style="margin-top: 20px;">
+            <label>Cicilan per bulan:</label><br>
+            <strong>Rp {{ monthly_payment|intcomma }}</strong>
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.loan-amount').forEach(function (input) {
+        input.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            e.target.value = value;
+        });
+    });
+});
+</script>
+
+{% endblock %}

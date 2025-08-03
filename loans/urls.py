@@ -52,4 +52,5 @@ urlpatterns = [
     path('verify-otp-property/', views.verify_otp_property, name='verify_otp_property'),
     path('ads-inquiry/', views.ads_inquiry, name='ads_inquiry'),
     path('verify-otp-ads/', views.verify_otp_ads, name='verify_otp_ads'),
+    path('kalkulator/', views.kpr_calculator, name='kpr_calculator'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

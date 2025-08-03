@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
-from .forms import LoanInquiryForm, HistoryForm, PropertySearchForm, PropertyForm, PropertyInquiryForm, AdsForm
+from .forms import LoanInquiryForm, HistoryForm, PropertySearchForm, PropertyForm, PropertyInquiryForm, AdsForm, KPRCalculatorForm
 from .models import Property, LoanInquiry, PropertyInquiry, AdsInquiry, PropertyImage
 import random
 
@@ -739,6 +739,37 @@ def verify_otp_ads(request):
             return render(request, 'verify_otp_ads.html', {'error_message': error_message})
 
     return render(request, 'verify_otp_ads.html')
+
+def kpr_calculator(request):
+    monthly_payment = None
+
+    if request.method == 'POST':
+        form = KPRCalculatorForm(request.POST)
+        if form.is_valid():
+            # Remove thousand separators and convert to int
+            harga_properti = int(form.cleaned_data['harga_properti'].replace('.', ''))
+            uang_muka = int(form.cleaned_data['uang_muka'].replace('.', ''))
+            bunga = form.cleaned_data['bunga']
+            tenor = form.cleaned_data['tenor']
+
+            pinjaman = harga_properti - uang_muka
+            bunga_bulanan = bunga / 12 / 100
+            jumlah_angsuran = tenor * 12
+
+            if bunga_bulanan > 0:
+                monthly_payment = round(
+                    pinjaman * bunga_bulanan / (1 - (1 + bunga_bulanan) ** -jumlah_angsuran)
+                )
+            else:
+                monthly_payment = round(pinjaman / jumlah_angsuran)
+
+    else:
+        form = KPRCalculatorForm()
+
+    return render(request, 'kpr_calculator.html', {
+        'form': form,
+        'monthly_payment': monthly_payment
+    })
 
 def why_us(request):
     return render(request, 'why_us.html')
