@@ -60,3 +60,31 @@ class KPRCalculatorForm(forms.Form):
         label='Tenor',
         widget=forms.NumberInput(attrs={'class': 'form-control'})
     )
+
+class ModalKerjaCalculatorForm(forms.Form):
+    plafon_pinjaman = forms.CharField(
+        label='Plafon Pinjaman',
+        widget=forms.TextInput(attrs={'class': 'loan-amount form-control'})
+    )
+    bunga = forms.FloatField(
+        label='Suku Bunga',
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+    tenor = forms.IntegerField(
+        label='Tenor (dalam tahun)',
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+
+class MultigunaCalculatorForm(forms.Form):
+    plafon_pinjaman = forms.CharField(
+        label='Plafon Pinjaman',
+        widget=forms.TextInput(attrs={'class': 'loan-amount form-control'})
+    )
+    bunga = forms.FloatField(
+        label='Suku Bunga',
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+    tenor = forms.IntegerField(
+        label='Tenor (dalam tahun)',
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )

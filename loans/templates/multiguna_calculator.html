@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+Kalkulator Multiguna - Hitung Cicilan | FINANCIAL BROKER
+{% endblock %}
+
+{% block meta_description %}
+Hitung cicilan bulanan pinjaman multiguna Anda dengan mudah menggunakan kalkulator multiguna dari FINANCIAL BROKER.
+{% endblock %}
+
+{% block meta_keywords %}
+kalkulator multiguna, kredit multiguna, pinjaman pribadi, cicilan bulanan, FINANCIAL BROKER
+{% endblock %}
+
+{% block content %}
+<div class="testbox" style="margin-top: 140px; margin-bottom: 50px;">
+    <form method="POST">
+        {% csrf_token %}
+
+        <h1><strong>Kalkulator Multiguna</strong></h1>
+        <p>Lengkapi Informasi Berikut:</p>
+
+        <div class="item">
+            <label for="plafon_pinjaman">Plafon Pinjaman (Rp)</label>
+            {{ form.plafon_pinjaman }}
+            {{ form.plafon_pinjaman.errors }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="bunga">Suku Bunga per Tahun (%)</label>
+            {{ form.bunga }}
+            {{ form.bunga.errors }}
+        </div>
+
+        <div class="item" style="margin-top: 15px;">
+            <label for="tenor">Tenor (tahun)</label>
+            {{ form.tenor }}
+            {{ form.tenor.errors }}
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <!-- Form 1: Hitung Cicilan -->
+            <form method="post" action="{% url 'multiguna_calculator' %}">
+                {% csrf_token %}
+                <button type="submit">Hitung</button>
+            </form>
+
+            <!-- Form 2: Download PDF (only show if result exists) -->
+            {% if efektif_schedule or anuitas_schedule %}
+                <form method="post" action="{% url 'multiguna_calculator_pdf' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="plafon_pinjaman" value="{{ form.plafon_pinjaman.value }}">
+                    <input type="hidden" name="bunga" value="{{ form.bunga.value }}">
+                    <input type="hidden" name="tenor" value="{{ form.tenor.value }}">
+                    <button type="submit">Download PDF</button>
+                </form>
+            {% endif %}
+        </div>
+
+    </form>
+</div>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.loan-amount').forEach(function (input) {
+        input.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            e.target.value = value;
+        });
+    });
+});
+</script>
+{% endblock %}

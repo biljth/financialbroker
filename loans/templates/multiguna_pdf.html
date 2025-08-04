@@ -1,0 +1,86 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: DejaVu Sans, sans-serif;
+            margin: 30px;
+            color: #333;
+            font-size: 16px;
+        }
+        h2 {
+            color: #00695c;
+            border-bottom: 2px solid #00695c;
+            padding-bottom: 5px;
+            font-size: 22px;
+        }
+        h3 {
+            margin-top: 40px;
+            color: #004d40;
+            font-size: 18px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th {
+            background-color: #e0f2f1;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #999;
+            font-size: 15px;
+        }
+        td {
+            padding: 8px;
+            border: 1px solid #999;
+            font-size: 15px;
+        }
+        .highlight {
+            font-weight: bold;
+            background-color: #f1f8e9;
+            padding: 8px;
+            border: 1px solid #c5e1a5;
+            margin-top: 15px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Kalkulasi Kredit Multiguna</h2>
+
+    <p><strong>Plafon:</strong> Rp {{ plafon_pinjaman|intcomma }}</p>
+    <p><strong>Bunga:</strong> {{ bunga }}%</p>
+    <p><strong>Tenor:</strong> {{ tenor }} tahun</p>
+
+    <!-- {% if total_efektif %}
+        <div class="highlight">
+            Total Bunga Efektif: Rp {{ total_efektif|intcomma }}
+        </div>
+    {% endif %} -->
+
+    <h3>Metode Anuitas</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Bulan</th>
+                <th>Total Cicilan</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in anuitas_schedule %}
+            <tr>
+                <td>{{ row.bulan }}</td>
+                <td>Rp {{ row.total|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

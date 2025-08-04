@@ -53,4 +53,9 @@ urlpatterns = [
     path('ads-inquiry/', views.ads_inquiry, name='ads_inquiry'),
     path('verify-otp-ads/', views.verify_otp_ads, name='verify_otp_ads'),
     path('kalkulator/', views.kpr_calculator, name='kpr_calculator'),
+    path('kalkulator/modal-kerja/', views.modal_kerja_calculator, name='modal_kerja_calculator'),
+    path('kalkulator/modal-kerja/pdf/', views.modal_kerja_pdf, name='modal_kerja_pdf'),
+    path('kalkulator/multiguna/', views.multiguna_calculator, name='multiguna_calculator'),
+    path('kalkulator/multiguna/pdf/', views.multiguna_calculator_pdf, name='multiguna_calculator_pdf'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
