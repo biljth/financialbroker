@@ -776,8 +776,9 @@ def kpr_calculator(request):
     })
 
 def modal_kerja_calculator(request):
-    schedule = []
-    total = 0
+    anuitas_schedule = []
+    efektif_schedule = []
+    total_anuitas = total_efektif = 0
     plafon_pinjaman = bunga = tenor = 0
 
     if request.method == 'POST':
@@ -790,24 +791,40 @@ def modal_kerja_calculator(request):
             tenor_bulan = tenor * 12
             bunga_bulanan = bunga / 100 / 12
 
+            # Metode Anuitas
             if bunga_bulanan > 0:
                 cicilan = round(plafon_pinjaman * bunga_bulanan / (1 - (1 + bunga_bulanan) ** -tenor_bulan))
             else:
                 cicilan = round(plafon_pinjaman / tenor_bulan)
 
             for i in range(tenor_bulan):
-                schedule.append({
+                anuitas_schedule.append({
                     'bulan': i + 1,
                     'total': cicilan
                 })
-                total += cicilan
+                total_anuitas += cicilan
+
+            # Metode Efektif
+            sisa_pinjaman = plafon_pinjaman
+            pokok_per_bulan = plafon_pinjaman / tenor_bulan
+            for i in range(tenor_bulan):
+                bunga_bulan_ini = sisa_pinjaman * bunga_bulanan
+                total_cicilan = bunga_bulan_ini + pokok_per_bulan
+                efektif_schedule.append({
+                    'bulan': i + 1,
+                    'total': round(total_cicilan)
+                })
+                total_efektif += total_cicilan
+                sisa_pinjaman -= pokok_per_bulan
     else:
         form = ModalKerjaCalculatorForm()
 
     return render(request, 'modal_kerja_calculator.html', {
         'form': form,
-        'schedule': schedule,
-        'total': total,
+        'anuitas_schedule': anuitas_schedule,
+        'efektif_schedule': efektif_schedule,
+        'total_anuitas': total_anuitas,
+        'total_efektif': round(total_efektif),
         'plafon_pinjaman': plafon_pinjaman,
         'bunga': bunga,
         'tenor': tenor
@@ -824,24 +841,42 @@ def modal_kerja_pdf(request):
             tenor_bulan = tenor * 12
             bunga_bulanan = bunga / 100 / 12
 
+            # Metode Anuitas
             if bunga_bulanan > 0:
                 cicilan = round(plafon_pinjaman * bunga_bulanan / (1 - (1 + bunga_bulanan) ** -tenor_bulan))
             else:
                 cicilan = round(plafon_pinjaman / tenor_bulan)
 
-            schedule = []
-            total = 0
+            anuitas_schedule = []
+            total_anuitas = 0
             for i in range(tenor_bulan):
-                schedule.append({
+                anuitas_schedule.append({
                     'bulan': i + 1,
                     'total': cicilan
                 })
-                total += cicilan
+                total_anuitas += cicilan
+
+            # Metode Efektif
+            efektif_schedule = []
+            sisa_pinjaman = plafon_pinjaman
+            pokok_per_bulan = plafon_pinjaman / tenor_bulan
+            total_efektif = 0
+            for i in range(tenor_bulan):
+                bunga_bulan_ini = sisa_pinjaman * bunga_bulanan
+                total_cicilan = bunga_bulan_ini + pokok_per_bulan
+                efektif_schedule.append({
+                    'bulan': i + 1,
+                    'total': round(total_cicilan)
+                })
+                total_efektif += total_cicilan
+                sisa_pinjaman -= pokok_per_bulan
 
             template = get_template('modal_kerja_pdf.html')
             html = template.render({
-                'schedule': schedule,
-                'total': total,
+                'anuitas_schedule': anuitas_schedule,
+                'efektif_schedule': efektif_schedule,
+                'total_anuitas': total_anuitas,
+                'total_efektif': round(total_efektif),
                 'plafon_pinjaman': plafon_pinjaman,
                 'bunga': bunga,
                 'tenor': tenor
@@ -923,6 +958,7 @@ def multiguna_calculator_pdf(request):
             tenor_bulan = tenor_tahun * 12
             bunga_bulanan = bunga_tahunan / 100 / 12
 
+            # === PERHITUNGAN EFEKTIF ===
             efektif_schedule = []
             total_efektif = 0
             pokok_per_bulan = round(plafon_pinjaman / tenor_bulan)
@@ -939,23 +975,27 @@ def multiguna_calculator_pdf(request):
                 })
                 total_efektif += cicilan_bulan_ini
 
+            # === PERHITUNGAN ANUITAS ===
             if bunga_bulanan > 0:
                 cicilan_anuitas = round(plafon_pinjaman * bunga_bulanan / (1 - (1 + bunga_bulanan) ** -tenor_bulan))
             else:
                 cicilan_anuitas = round(plafon_pinjaman / tenor_bulan)
 
             anuitas_schedule = []
+            total_anuitas = 0
             for i in range(tenor_bulan):
                 anuitas_schedule.append({
                     'bulan': i + 1,
                     'total': cicilan_anuitas
                 })
+                total_anuitas += cicilan_anuitas
 
             context = {
                 'plafon_pinjaman': plafon_pinjaman,
                 'bunga': bunga_tahunan,
                 'tenor': tenor_tahun,
                 'total_efektif': total_efektif,
+                'total_anuitas': total_anuitas,
                 'efektif_schedule': efektif_schedule,
                 'anuitas_schedule': anuitas_schedule,
             }
@@ -969,7 +1009,6 @@ def multiguna_calculator_pdf(request):
             pisa.CreatePDF(html, dest=response)
             return response
 
-    # If not POST or invalid, redirect back or return error
     return HttpResponse("Invalid data", status=400)
 
 def render_to_pdf(template_src, context_dict={}):

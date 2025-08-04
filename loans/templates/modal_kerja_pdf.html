@@ -59,11 +59,10 @@
     <p><strong>Bunga:</strong> {{ bunga }}%</p>
     <p><strong>Tenor:</strong> {{ tenor }} tahun</p>
 
-    <!-- {% if total_efektif %}
-        <div class="highlight">
-            Total Bunga Efektif: Rp {{ total_efektif|intcomma }}
-        </div>
-    {% endif %} -->
+    <div class="highlight">
+        Total Bunga Efektif: Rp {{ total_efektif|intcomma }}<br>
+        Total Anuitas: Rp {{ total_anuitas|intcomma }}
+    </div>
 
     <h3>Metode Anuitas</h3>
     <table>
@@ -74,7 +73,25 @@
             </tr>
         </thead>
         <tbody>
-        {% for row in schedule %}
+        {% for row in anuitas_schedule %}
+            <tr>
+                <td>{{ row.bulan }}</td>
+                <td>Rp {{ row.total|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Metode Efektif</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Bulan</th>
+                <th>Total Cicilan</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in efektif_schedule %}
             <tr>
                 <td>{{ row.bulan }}</td>
                 <td>Rp {{ row.total|intcomma }}</td>

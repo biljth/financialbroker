@@ -47,9 +47,9 @@ kalkulator modal kerja, kredit usaha, cicilan bulanan, pinjaman modal kerja, FIN
                 {% csrf_token %}
                 <button type="submit">Hitung</button>
             </form>
-            
+
             <!-- Form 2: Download PDF (only show if result exists) -->
-            {% if schedule %}
+            {% if anuitas_schedule or efektif_schedule %}
                 <form method="post" action="{% url 'modal_kerja_pdf' %}">
                     {% csrf_token %}
                     <input type="hidden" name="plafon_pinjaman" value="{{ form.plafon_pinjaman.value }}">

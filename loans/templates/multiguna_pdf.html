@@ -55,15 +55,36 @@
 <body>
     <h2>Kalkulasi Kredit Multiguna</h2>
 
-    <p><strong>Plafon:</strong> Rp {{ plafon_pinjaman|intcomma }}</p>
+    <p><strong>Plafon Pinjaman:</strong> Rp {{ plafon_pinjaman|intcomma }}</p>
     <p><strong>Bunga:</strong> {{ bunga }}%</p>
     <p><strong>Tenor:</strong> {{ tenor }} tahun</p>
 
-    <!-- {% if total_efektif %}
-        <div class="highlight">
-            Total Bunga Efektif: Rp {{ total_efektif|intcomma }}
-        </div>
-    {% endif %} -->
+    <div class="highlight">
+        Total Bunga Efektif: Rp {{ total_efektif|intcomma }}<br>
+        Total Anuitas: Rp {{ total_anuitas|intcomma }}
+    </div>
+
+    <h3>Metode Efektif</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Bulan</th>
+                <th>Pokok</th>
+                <th>Bunga</th>
+                <th>Total Cicilan</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in efektif_schedule %}
+            <tr>
+                <td>{{ row.bulan }}</td>
+                <td>Rp {{ row.pokok|intcomma }}</td>
+                <td>Rp {{ row.bunga|intcomma }}</td>
+                <td>Rp {{ row.total|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
     <h3>Metode Anuitas</h3>
     <table>
