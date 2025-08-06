@@ -64,6 +64,28 @@
         Total Anuitas: Rp {{ total_anuitas|intcomma }}
     </div>
 
+    <h3>Metode Efektif</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Bulan</th>
+                <th>Pokok</th>
+                <th>Bunga</th>
+                <th>Total Cicilan</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in efektif_schedule %}
+            <tr>
+                <td>{{ row.bulan }}</td>
+                <td>{{ row.pokok|intcomma }}</td>
+                <td>{{ row.bunga|intcomma }}</td>
+                <td>{{ row.total|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     <h3>Metode Anuitas</h3>
     <table>
         <thead>
@@ -82,22 +104,5 @@
         </tbody>
     </table>
 
-    <h3>Metode Efektif</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Bulan</th>
-                <th>Total Cicilan</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for row in efektif_schedule %}
-            <tr>
-                <td>{{ row.bulan }}</td>
-                <td>Rp {{ row.total|intcomma }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 </body>
 </html>

@@ -78,9 +78,9 @@
         {% for row in efektif_schedule %}
             <tr>
                 <td>{{ row.bulan }}</td>
-                <td>Rp {{ row.pokok|intcomma }}</td>
-                <td>Rp {{ row.bunga|intcomma }}</td>
-                <td>Rp {{ row.total|intcomma }}</td>
+                <td>{{ row.pokok|intcomma }}</td>
+                <td>{{ row.bunga|intcomma }}</td>
+                <td>{{ row.total|intcomma }}</td>
             </tr>
         {% endfor %}
         </tbody>
