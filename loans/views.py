@@ -806,13 +806,13 @@ def modal_kerja_calculator(request):
 
             # Metode Efektif
             sisa_pinjaman = plafon_pinjaman
-            pokok_per_bulan = plafon_pinjaman / tenor_bulan
+            pokok_per_bulan = round(plafon_pinjaman / tenor_bulan, -3)
             for i in range(tenor_bulan):
-                bunga_bulan_ini = sisa_pinjaman * bunga_bulanan
+                bunga_bulan_ini = round(sisa_pinjaman * bunga_bulanan, -3)
                 total_cicilan = bunga_bulan_ini + pokok_per_bulan
                 efektif_schedule.append({
                     'bulan': i + 1,
-                    'total': round(total_cicilan)
+                    'total': round(total_cicilan, -3)
                 })
                 total_efektif += total_cicilan
                 sisa_pinjaman -= pokok_per_bulan
@@ -856,23 +856,34 @@ def modal_kerja_pdf(request):
                 })
                 total_anuitas += cicilan
 
-            # Metode Efektif
+            # === PERHITUNGAN EFEKTIF ===
             efektif_schedule = []
-            sisa_pinjaman = plafon_pinjaman
-            pokok_per_bulan = round(plafon_pinjaman / tenor_bulan, -3)
             total_efektif = 0
-            for i in range(tenor_bulan):
-                bunga_bulan_ini = round(sisa_pinjaman * bunga_bulanan, -3)
-                total_cicilan = bunga_bulan_ini + pokok_per_bulan
+            pokok_per_bulan = round(plafon_pinjaman / tenor_bulan, -3)
+
+            for i in range(tenor_bulan + 1):
+                if i == 0:
+                    continue
+
+                if i == tenor_bulan + 1:
+                    efektif_schedule.append({
+                        'bulan': i,
+                        'pokok': 0,
+                        'bunga': 0,
+                        'total': 0
+                    })
+                    break
+
+                sisa_pokok = plafon_pinjaman - (pokok_per_bulan * i)
+                bunga_bulan_ini = round(sisa_pokok * bunga_bulanan, -3)
+                cicilan_bulan_ini = pokok_per_bulan + bunga_bulan_ini
                 efektif_schedule.append({
-                    'bulan': i + 1,
+                    'bulan': i,
                     'pokok': pokok_per_bulan,
                     'bunga': bunga_bulan_ini,
-                    'total': round(total_cicilan, -3),  # Round total installment like in the table
-                    'sisa': round(sisa_pinjaman - pokok_per_bulan)
+                    'total': round(cicilan_bulan_ini, -3)
                 })
-                total_efektif += total_cicilan
-                sisa_pinjaman -= pokok_per_bulan
+                total_efektif += cicilan_bulan_ini
 
             template = get_template('modal_kerja_pdf.html')
             html = template.render({
@@ -913,16 +924,16 @@ def multiguna_calculator(request):
             bunga_bulanan = bunga_tahunan / 100 / 12
 
             ### === PERHITUNGAN EFEKTIF ===
-            pokok_per_bulan = round(plafon_pinjaman / tenor_bulan)
+            pokok_per_bulan = round(plafon_pinjaman / tenor_bulan, -3)
             for i in range(tenor_bulan):
                 sisa_pokok = plafon_pinjaman - (pokok_per_bulan * i)
-                bunga_bulan_ini = round(sisa_pokok * bunga_bulanan)
+                bunga_bulan_ini = round(sisa_pokok * bunga_bulanan, -3)
                 cicilan_bulan_ini = pokok_per_bulan + bunga_bulan_ini
                 efektif_schedule.append({
                     'bulan': i + 1,
                     'pokok': pokok_per_bulan,
                     'bunga': bunga_bulan_ini,
-                    'total': cicilan_bulan_ini
+                    'total': round(cicilan_bulan_ini, -3)
                 })
                 total_efektif += cicilan_bulan_ini
 
@@ -966,12 +977,24 @@ def multiguna_calculator_pdf(request):
             total_efektif = 0
             pokok_per_bulan = round(plafon_pinjaman / tenor_bulan, -3)
 
-            for i in range(tenor_bulan):
+            for i in range(tenor_bulan + 1):
+                if i == 0:
+                    continue
+
+                if i == tenor_bulan + 1:
+                    efektif_schedule.append({
+                        'bulan': i,
+                        'pokok': 0,
+                        'bunga': 0,
+                        'total': 0
+                    })
+                    break
+
                 sisa_pokok = plafon_pinjaman - (pokok_per_bulan * i)
                 bunga_bulan_ini = round(sisa_pokok * bunga_bulanan, -3)
                 cicilan_bulan_ini = pokok_per_bulan + bunga_bulan_ini
                 efektif_schedule.append({
-                    'bulan': i + 1,
+                    'bulan': i,
                     'pokok': pokok_per_bulan,
                     'bunga': bunga_bulan_ini,
                     'total': round(cicilan_bulan_ini, -3)
