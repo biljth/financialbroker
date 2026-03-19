@@ -156,6 +156,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'financialbrokerid@gmail.com'
 EMAIL_HOST_PASSWORD = 'sjog ewkz yixl cvam'
+DEFAULT_FROM_EMAIL = 'financialbrokerid@gmail.com'
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://financialbroker.id',
